@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, View, Text, StyleSheet, ActionSheetIOS } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
-
+import Nav from '../components/Nav'
 
 function ProfileScreen({ navigation }) {
 
@@ -159,7 +159,7 @@ function ProfileScreen({ navigation }) {
                             <Text style={styles.label} onPress={handlePress}>Sex:</Text>
                         </View>
                         <View style={styles.inputContainer}>
-                            <Text style={styles.textInput} >{sex}</Text>
+                            <TextInput style={styles.textInput} placeholder="male/female" value={sex} />
                         </View>
                     </View>
                     <View style={styles.rowView}>
@@ -167,7 +167,7 @@ function ProfileScreen({ navigation }) {
                             <Text style={styles.label} onPress={pal}>PA Level:</Text>
                         </View>
                         <View style={styles.inputContainer}>
-                            <Text style={styles.textInput} >{activityLevel}</Text>
+                            <TextInput style={styles.textInput} placeholder="activity level" value={activityLevel} />
                         </View>
                     </View>
                 </View>
@@ -219,23 +219,7 @@ function ProfileScreen({ navigation }) {
                     </View>
                 </View>
 
-                <View style={styles.rowButton}>
-                    <View style={styles.navButton}>
-                        <View>
-                            <MaterialIcons name="home" size={84} color="black" onPress={() => navigation.navigate('Home')} />
-                        </View>
-                    </View>
-                    <View style={styles.navButton}>
-                        <View>
-                            <MaterialCommunityIcons name="nutrition" size={84} color="black" onPress={() => navigation.navigate('Macro')} />
-                        </View>
-                    </View>
-                    <View style={styles.navButton}>
-                        <View>
-                            <FontAwesome5 style={{ marginBottom: 4 }} name="nutritionix" size={84} color="black" onPress={() => navigation.navigate('Food Log')} />
-                        </View>
-                    </View>
-                </View>
+                <Nav navigation={navigation} />
 
             </View>
         </View>
@@ -310,12 +294,7 @@ const styles = StyleSheet.create({
         color: "#4E709D",
         fontSize: 25,
         textAlign: "left",
-        marginLeft: 15
-    },
-
-    navText: {
-        color: "#4E709D",
-        fontSize: 25,
+        marginLeft: 15,
     },
 
     textHeader: {
@@ -325,26 +304,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
 
-    rowButton: {
-        height: 200,
-        width: "100%",
-        flexDirection: "row",
-        borderWidth: 1,
-        color: "#ff8584",
-        justifyContent: "space-evenly",
-    },
-
-    navButton: {
-        height: 89,
-        width: "25%",
-        flexDirection: "row",
-        borderWidth: 1,
-        marginTop: 14,
-        padding: 2,
-        backgroundColor: "#F5B17B",
-        justifyContent: "center",
-        alignItems: "flex-end",
-    }
 })
 
 export default ProfileScreen

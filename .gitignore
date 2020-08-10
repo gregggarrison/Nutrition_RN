@@ -11,3 +11,8 @@ web-build/
 
 # macOS
 .DS_Store
+
+#API key
+.env    
+
+'./node_modules

@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, View, Text, StyleSheet, ActionSheetIOS } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
-import { Picker } from '@react-native-community/picker'
 
 function ProfileScreen({ navigation }) {
 
@@ -11,11 +10,47 @@ function ProfileScreen({ navigation }) {
     const [weight, setWeight] = useState(null)
     const [sex, setSex] = useState("")
     const [BMR, setBMR] = useState(null)
-    const [activityLevel, setActivityLevel] = useState('lightly active')
+    const [activityLevel, setActivityLevel] = useState('')
 
-    const handleChange = (text) => {
-        setSex(text)
-        getBMR()
+
+    const handlePress = () => {
+        ActionSheetIOS.showActionSheetWithOptions(
+            {
+                options: ["Cancel", "male", "female"],
+                cancelButtonIndex: 0
+            },
+            buttonIndex => {
+                if (buttonIndex === 0) {
+                } else if (buttonIndex === 1) {
+                    setSex('male')
+                } else if (buttonIndex === 2) {
+                    setSex('female')
+                }
+            }
+        );
+    }
+
+    const pal = () => {
+        ActionSheetIOS.showActionSheetWithOptions(
+            {
+                options: ["cancel", "sedentary", "lightly active", "active", "very active", "too active"],
+                cancelButtonIndex: 0
+            },
+            buttonIndex => {
+                if (buttonIndex === 0) {
+                } else if (buttonIndex === 1) {
+                    setActivityLevel("sedentary")
+                } else if (buttonIndex === 2) {
+                    setActivityLevel("lightly active")
+                } else if (buttonIndex === 3) {
+                    setActivityLevel("active")
+                } else if (buttonIndex === 4) {
+                    setActivityLevel("very active")
+                } else if (buttonIndex === 5) {
+                    setActivityLevel("too active")
+                }
+            }
+        )
     }
 
     const getBMR = () => {
@@ -23,19 +58,40 @@ function ProfileScreen({ navigation }) {
         const kgConv = 0.453592
         const heightCM = height * cmConv
         const weightKG = weight * kgConv
-        const s = sex !== "M" ? 5 : -161
-        console.log('sex', sex)
-        console.log('s', s)
+        const s = sex === "male" ? 5 : -161
 
         let bmr = Math.floor(10 * weightKG + 6.25 * heightCM - 5 * age + s)
         setBMR(bmr)
         return (bmr)
     }
 
+    useEffect(() => {
+        if (weight && height && sex && age && activityLevel) {
+            getBMR()
+        }
+    }, [weight, height, age, sex, activityLevel])
+
+
     const getMaintain = () => {
-        if (activityLevel === "lightly active") {
-            let pal = 1.375
-            return Math.floor(pal * BMR)
+        if (activityLevel === "sedentary") {
+            let apal = 1.2
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "lightly active") {
+            let apal = 1.375
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "active") {
+            let apal = 1.55
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "very active") {
+            let apal = 1.725
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "too active") {
+            let apal = 1.9
+            return Math.floor(apal * BMR)
         }
     }
 
@@ -43,140 +99,118 @@ function ProfileScreen({ navigation }) {
 
         <View style={styles.container}>
             <View style={styles.main}>
-
                 <View style={styles.profileContainer}>
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>Username:</Text>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="name"
-                                    onChangeText={(text) => setUsername(text)}
-                                    value={username}
-                                />
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="name"
+                                onChangeText={(text) => setUsername(text)}
+                                value={username}
+                            />
                         </View>
                     </View>
-
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>Age:</Text>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="age"
-                                    onChangeText={(text) => setAge(text)}
-                                    value={age}
-                                />
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="age"
+                                onChangeText={(text) => setAge(text)}
+                                value={age}
+                            />
                         </View>
                     </View>
-
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>Height:</Text>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="inchs"
-                                    onChangeText={(text) => setHeight(text)}
-                                    value={height}
-                                />
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="inchs"
+                                onChangeText={(text) => setHeight(text)}
+                                value={height}
+                            />
                         </View>
                     </View>
-
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>Weight:</Text>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="pounds"
-                                    onChangeText={(text) => setWeight(text)}
-                                    value={weight}
-                                />
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="pounds"
+                                onChangeText={(text) => setWeight(text)}
+                                value={weight}
+                            />
                         </View>
                     </View>
-
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
-                            <Text style={styles.label}>Sex:</Text>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="m/f"
-                                    onChangeText={handleChange}
-                                // onChangeText={(text) => setSex(text)}
-                                // value={sex}
-                                />
-                            </View>
+                            <Text style={styles.label} onPress={handlePress}>Sex:</Text>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.textInput} >{sex}</Text>
                         </View>
                     </View>
                 </View>
-
                 <View style={styles.calorieContainer}>
-
                     <View style={styles.header}>
                         <Text style={styles.textHeader}>Recomended Calories</Text>
                     </View>
-
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
-                            <Text style={styles.label}>PA Level:</Text>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="act level"
-                                    // onChangeText={(text) => setSex(text)}
-                                    // value="Active"
-                                    defaultValue={activityLevel}
-                                />
-                            </View>
+                            <Text style={styles.label} onPress={pal}>PA Level:</Text>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.textInput} >{activityLevel}</Text>
                         </View>
                     </View>
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>BMR:</Text>
-                            <View style={styles.inputContainer}>
-                                <Text style={styles.textInput} >
-                                    {BMR}
-                                </Text>
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.textInput} >
+                                {BMR}
+                            </Text>
                         </View>
                     </View>
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>Maintain:</Text>
-                            <View style={styles.inputContainer}>
-                                <Text style={styles.textInput}>
-                                    {BMR === null ? null : getMaintain()}
-                                </Text>
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.textInput}>
+                                {BMR === null ? null : getMaintain()}
+                            </Text>
                         </View>
                     </View>
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>-1 lb/wk:</Text>
-                            <View style={styles.inputContainer}>
-                                <Text style={styles.textInput}>
-                                    {getMaintain() === 0 ? null : getMaintain() - 500}
-                                    {/* {getMaintain() - 500} */}
-                                </Text>
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.textInput}>
+                                {getMaintain() === 0 ? null : getMaintain() - 500}
+                            </Text>
                         </View>
                     </View>
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>+1 lb/wk:</Text>
-                            <View style={styles.inputContainer}>
-                                <Text style={styles.textInput}>
-                                    {getMaintain() === 0 ? null : getMaintain() + 500}
-
-                                </Text>
-                            </View>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.textInput}>
+                                {getMaintain() === 0 ? null : getMaintain() + 500}
+                            </Text>
                         </View>
                     </View>
                 </View>
@@ -184,7 +218,6 @@ function ProfileScreen({ navigation }) {
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -201,7 +234,6 @@ const styles = StyleSheet.create({
         width: "100%",
         backgroundColor: "#F6F6F6",
         marginTop: 12,
-
     },
 
     calorieContainer: {
@@ -235,9 +267,8 @@ const styles = StyleSheet.create({
         borderColor: "#000000",
         alignItems: "center",
         justifyContent: "flex-end",
-        marginLeft: 80,
-
     },
+
     inputContainer: {
         height: 50,
         width: "60%",

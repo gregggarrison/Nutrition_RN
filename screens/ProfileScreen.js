@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Button, View, Text, StyleSheet, ActionSheetIOS } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
+import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
+
 
 function ProfileScreen({ navigation }) {
 
@@ -33,7 +35,7 @@ function ProfileScreen({ navigation }) {
     const pal = () => {
         ActionSheetIOS.showActionSheetWithOptions(
             {
-                options: ["cancel", "sedentary", "lightly active", "active", "very active", "too active"],
+                options: ["cancel", "sedentary", "slightly active", "active", "very active", "too active"],
                 cancelButtonIndex: 0
             },
             buttonIndex => {
@@ -41,7 +43,7 @@ function ProfileScreen({ navigation }) {
                 } else if (buttonIndex === 1) {
                     setActivityLevel("sedentary")
                 } else if (buttonIndex === 2) {
-                    setActivityLevel("lightly active")
+                    setActivityLevel("slightly active")
                 } else if (buttonIndex === 3) {
                     setActivityLevel("active")
                 } else if (buttonIndex === 4) {
@@ -77,7 +79,7 @@ function ProfileScreen({ navigation }) {
             let apal = 1.2
             return Math.floor(apal * BMR)
         }
-        else if (activityLevel === "lightly active") {
+        else if (activityLevel === "slightly active") {
             let apal = 1.375
             return Math.floor(apal * BMR)
         }
@@ -160,11 +162,6 @@ function ProfileScreen({ navigation }) {
                             <Text style={styles.textInput} >{sex}</Text>
                         </View>
                     </View>
-                </View>
-                <View style={styles.calorieContainer}>
-                    <View style={styles.header}>
-                        <Text style={styles.textHeader}>Recomended Calories</Text>
-                    </View>
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label} onPress={pal}>PA Level:</Text>
@@ -173,6 +170,13 @@ function ProfileScreen({ navigation }) {
                             <Text style={styles.textInput} >{activityLevel}</Text>
                         </View>
                     </View>
+                </View>
+
+                <View style={styles.calorieContainer}>
+                    <View style={styles.header}>
+                        <Text style={styles.textHeader}>Recomended Calories:</Text>
+                    </View>
+               
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>BMR:</Text>
@@ -199,7 +203,7 @@ function ProfileScreen({ navigation }) {
                         </View>
                         <View style={styles.inputContainer}>
                             <Text style={styles.textInput}>
-                                {getMaintain() === 0 ? null : getMaintain() - 500}
+                                {BMR === null ? null : getMaintain() - 500}
                             </Text>
                         </View>
                     </View>
@@ -209,11 +213,30 @@ function ProfileScreen({ navigation }) {
                         </View>
                         <View style={styles.inputContainer}>
                             <Text style={styles.textInput}>
-                                {getMaintain() === 0 ? null : getMaintain() + 500}
+                                {BMR === null ? null : getMaintain() + 500}
                             </Text>
                         </View>
                     </View>
                 </View>
+
+                <View style={styles.rowButton}>
+                    <View style={styles.navButton}>
+                        <View>
+                            <MaterialIcons name="home" size={84} color="black" onPress={() => navigation.navigate('Home')} />
+                        </View>
+                    </View>
+                    <View style={styles.navButton}>
+                        <View>
+                            <MaterialCommunityIcons name="nutrition" size={84} color="black" onPress={() => navigation.navigate('Macro')} />
+                        </View>
+                    </View>
+                    <View style={styles.navButton}>
+                        <View>
+                            <FontAwesome5 style={{ marginBottom: 4 }} name="nutritionix" size={84} color="black" onPress={() => navigation.navigate('Food Log')} />
+                        </View>
+                    </View>
+                </View>
+
             </View>
         </View>
     )
@@ -225,19 +248,19 @@ const styles = StyleSheet.create({
     },
 
     main: {
-        height: "85%",
+        height: "96%",
         backgroundColor: "#4E709D",
     },
 
     profileContainer: {
-        height: 250,
+        height: 300,
         width: "100%",
         backgroundColor: "#F6F6F6",
         marginTop: 12,
     },
 
     calorieContainer: {
-        height: 3000,
+        height: 250,
         width: "100%",
         backgroundColor: "#F6F6F6",
         marginTop: 12,
@@ -290,11 +313,37 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
 
+    navText: {
+        color: "#4E709D",
+        fontSize: 25,
+    },
+
     textHeader: {
         color: "#F6F6F6",
         fontSize: 28,
         textAlign: "center",
         fontWeight: "bold",
+    },
+
+    rowButton: {
+        height: 200,
+        width: "100%",
+        flexDirection: "row",
+        borderWidth: 1,
+        color: "#ff8584",
+        justifyContent: "space-evenly",
+    },
+
+    navButton: {
+        height: 89,
+        width: "25%",
+        flexDirection: "row",
+        borderWidth: 1,
+        marginTop: 14,
+        padding: 2,
+        backgroundColor: "#F5B17B",
+        justifyContent: "center",
+        alignItems: "flex-end",
     }
 })
 

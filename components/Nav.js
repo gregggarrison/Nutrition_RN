@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         width: "100%",
         flexDirection: "row",
         borderWidth: 1,
-        color: "#ff8584",
+        // backgroundColor: "#ff8584",
         justifyContent: "space-evenly",
     },
 

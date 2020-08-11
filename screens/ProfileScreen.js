@@ -297,6 +297,11 @@ const styles = StyleSheet.create({
         marginLeft: 15,
     },
 
+    navText: {
+        color: "#4E709D",
+        fontSize: 25,
+    },
+
     textHeader: {
         color: "#F6F6F6",
         fontSize: 28,
@@ -304,6 +309,26 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
 
+    rowButton: {
+        height: 200,
+        width: "100%",
+        flexDirection: "row",
+        borderWidth: 1,
+        color: "#ff8584",
+        justifyContent: "space-evenly",
+    },
+
+    navButton: {
+        height: 89,
+        width: "25%",
+        flexDirection: "row",
+        borderWidth: 1,
+        marginTop: 14,
+        padding: 2,
+        backgroundColor: "#F5B17B",
+        justifyContent: "center",
+        alignItems: "flex-end",
+    }
 })
 
 export default ProfileScreen

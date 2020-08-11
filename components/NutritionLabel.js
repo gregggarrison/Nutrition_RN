@@ -3,9 +3,6 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 
 export default function NutritionLabel({ meal, clearState }) {
 
-    // console.log(meal)
-
-
     function findNutrient(id) {
         if (meal.full_nutrients) {
             return meal.full_nutrients.find(nutrient => nutrient["attr_id"] === id)
@@ -16,39 +13,11 @@ export default function NutritionLabel({ meal, clearState }) {
         const amount = nutrient ? nutrient.value : 0
         return parseFloat(amount).toFixed(decimals)
     }
-
-    const calories = findNutrient(208)
-    const lCalories = toNumberUnits(calories, 0)
-    const fiber = findNutrient(291)
-    const lFiber = toNumberUnits(fiber, 1)
-    const totalFat = findNutrient(204)
-    const lTotalFat = toNumberUnits(totalFat, 1)
-
-    const lCaloriesFat = (totalFat.value * 9).toFixed(0)
-
-    const protein = findNutrient(203)
-    const lProtein = toNumberUnits(protein, 1)
-
-    const carbs = findNutrient(205)
-    const lCarbs = toNumberUnits(carbs, 1)
-
-    const cholest = findNutrient(601)
-    const lCholest = toNumberUnits(cholest, 1, "mg")
-
-    const sFat = findNutrient(606)
-    const lSFat = toNumberUnits(sFat, 1)
-
-    const transFat = findNutrient(605)
-    const lTransFat = toNumberUnits(transFat, 1)
-
-    const sugar = findNutrient(269)
-    const lSugar = toNumberUnits(sugar, 1)
-
-    const sodium = findNutrient(307)
-    const lSodium = toNumberUnits(sodium, 1, "mg")
-
-
-    // console.log(lCalories)
+    
+    function percentDV(nutrient, nutrientDV) {
+        const amount = nutrient ? nutrient.value : 0
+        return ((parseFloat(amount) / nutrientDV) * 100).toFixed(0) + "%"
+    }
 
     let sodDV = 2400
     let lSatFatDV = 20
@@ -56,12 +25,28 @@ export default function NutritionLabel({ meal, clearState }) {
     let lCarbsDV = 300
     let lCholestDV = 300
     let lFiberDV = 25
-    
-    
-    function percentDV(nutrient, nutrientDV) {
-        const amount = nutrient ? nutrient.value : 0
-        return ((parseFloat(amount) / nutrientDV) * 100).toFixed(0) + "%"
-    }
+
+    const calories = findNutrient(208)
+    const lCalories = toNumberUnits(calories, 0)
+    const fiber = findNutrient(291)
+    const lFiber = toNumberUnits(fiber, 1)
+    const totalFat = findNutrient(204)
+    const lTotalFat = toNumberUnits(totalFat, 1)
+    const lCaloriesFat = (totalFat.value * 9).toFixed(0)
+    const protein = findNutrient(203)
+    const lProtein = toNumberUnits(protein, 1)
+    const carbs = findNutrient(205)
+    const lCarbs = toNumberUnits(carbs, 1)
+    const cholest = findNutrient(601)
+    const lCholest = toNumberUnits(cholest, 1, "mg")
+    const sFat = findNutrient(606)
+    const lSFat = toNumberUnits(sFat, 1)
+    const transFat = findNutrient(605)
+    const lTransFat = toNumberUnits(transFat, 1)
+    const sugar = findNutrient(269)
+    const lSugar = toNumberUnits(sugar, 1)
+    const sodium = findNutrient(307)
+    const lSodium = toNumberUnits(sodium, 1, "mg")
     
     const fiberDV = percentDV(fiber, lFiberDV)
     const sodiumDV = percentDV(sodium, sodDV)
@@ -70,11 +55,7 @@ export default function NutritionLabel({ meal, clearState }) {
     const carbsDV = percentDV(carbs, lCarbsDV)
     const cholestDV = percentDV(cholest, lCholestDV)
 
-
     return (
-
-
-
 
         <View style={styles.container}>
             <View style={styles.labelContainer}>
@@ -86,26 +67,22 @@ export default function NutritionLabel({ meal, clearState }) {
                         <Text style={{ textAlign: "right", marginRight: 10 }}>Calories from Fat {lCaloriesFat}</Text>
                     </View>
                 </View>
-
                 <View style={styles.borderThin}></View>
                 <View style={styles.bottomBorder}>
                     <Text style={{ textAlign: "right", right: -230 }}>% Daily Value</Text>
                 </View>
-
                 <View style={styles.bottomBorder}>
                     <Text style={styles.textLeft}>Total Fat {lTotalFat} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
                         <Text style={styles.textRight}>{totalFatDV}</Text>
                     </View>
                 </View>
-
                 <View style={styles.bottomBorder}>
                     <Text style={{ marginLeft: 10 }}>Saturated Fat {lSFat} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
                         <Text style={styles.textRight}>{sFatDV}</Text>
                     </View>
                 </View>
-
                 <View style={styles.bottomBorder}>
                     <Text style={styles.textLeft}>Cholesterol {lCholest} mg</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
@@ -118,7 +95,6 @@ export default function NutritionLabel({ meal, clearState }) {
                         <Text style={styles.textRight}>{sodiumDV}</Text>
                     </View>
                 </View>
-
                 <View style={styles.bottomBorder}>
                     <Text style={styles.textLeft}>Total Carbohydrates {lCarbs} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
@@ -137,14 +113,12 @@ export default function NutritionLabel({ meal, clearState }) {
                         <Text style={styles.textRight}></Text>
                     </View>
                 </View>
-
                 <View style={styles.bottomBorder}>
                     <Text style={styles.textLeft}>Protein {lProtein} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
                         <Text style={styles.textRight}></Text>
                     </View>
                 </View>
-
                 <View style={{flexDirection: "row", justifyContent: "space-between", marginTop: 3}}>
                     <Button title="Add"></Button>
                     <Button onPress={() => clearState()}title="Go Back"></Button>

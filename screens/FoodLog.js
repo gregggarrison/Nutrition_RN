@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Button, Image } from 'react-native'
-import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 import { APP_API_ID, API_KEY } from 'react-native-dotenv'
 import NutritionLabel from '../components/NutritionLabel'
-import { set } from 'react-native-reanimated';
 
 export default function FoodLog() {
-
 
     const [query, setQuery] = useState("")
     const [meal, setMeal] = useState({})
 
     const handlePress = () => {
-        // setMeal({})
         setQuery("")
         const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${query}&detailed=true`
         fetch(searchURL, {
@@ -24,6 +20,7 @@ export default function FoodLog() {
         }).then(response => response.json())
             .then(meal => setMeal(meal.common[0]))
     }
+    
     function findNutrient(id) {
         if (meal.full_nutrients) {
             return meal.full_nutrients.find(nutrient => nutrient["attr_id"] === id)
@@ -40,12 +37,10 @@ export default function FoodLog() {
 
     const clearState = () => {
         setMeal({})
-        // setQuery("")
     }
 
     return (
         <View style={styles.container}>
-            <Text>Food Log</Text>
             <TextInput style={styles.search} onChangeText={(text) => setQuery(text)} >
 
             </TextInput>
@@ -67,26 +62,20 @@ export default function FoodLog() {
                         </View>
                         <View style={styles.cellBig}>
                             <Text style={styles.text}>{meal.food_name}</Text>
-
-
                         </View>
                         <View style={styles.cellXSmall}>
-
                             <Text style={styles.text}>{meal.serving_qty}</Text>
                         </View>
                         <View style={styles.cellBig}>
                             <Text style={styles.text}>{meal.serving_unit}</Text>
-
                         </View>
                         <View style={styles.cellSmall}>
                             <Text style={styles.text}>{lCalories}</Text>
-
                         </View>
                     </View>
 
                     <NutritionLabel meal={meal} clearState={clearState}/>
                 </>
-
                 : null
             }
         </View>

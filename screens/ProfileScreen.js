@@ -135,7 +135,7 @@ function ProfileScreen({ navigation }) {
                         <View style={styles.inputContainer}>
                             <TextInput
                                 style={styles.textInput}
-                                placeholder="inchs"
+                                placeholder="inches"
                                 onChangeText={(text) => setHeight(text)}
                                 value={height}
                             />

@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         // backgroundColor: "#ff8584",
         justifyContent: "space-evenly",
+        position: "absolute",
+        bottom: -80,
     },
 
     navButton: {

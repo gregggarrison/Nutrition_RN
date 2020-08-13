@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Button, Image } from 'react-native'
 import { APP_API_ID, API_KEY } from 'react-native-dotenv'
+
 import NutritionLabel from '../components/NutritionLabel'
+import SearchResults from '../components/SearchResults'
+import SearchBar from '../components/SearchBar'
+
+
 
 export default function FoodLog() {
 
     const [query, setQuery] = useState("")
     const [meal, setMeal] = useState({})
+
+
 
     const handlePress = () => {
         setQuery("")
@@ -19,21 +26,10 @@ export default function FoodLog() {
             }
         }).then(response => response.json())
             .then(meal => setMeal(meal.common[0]))
-    }
-    
-    function findNutrient(id) {
-        if (meal.full_nutrients) {
-            return meal.full_nutrients.find(nutrient => nutrient["attr_id"] === id)
-        }
+            .then(console.log(meal))
     }
 
-    function toNumberUnits(nutrient, decimals) {
-        const amount = nutrient ? nutrient.value : 0
-        return parseFloat(amount).toFixed(decimals)
-    }
-
-    const calories = findNutrient(208)
-    const lCalories = toNumberUnits(calories, 0)
+   
 
     const clearState = () => {
         setMeal({})
@@ -41,40 +37,14 @@ export default function FoodLog() {
 
     return (
         <View style={styles.container}>
-            <TextInput style={styles.search} onChangeText={(text) => setQuery(text)} >
-
-            </TextInput>
-            <Button title="click" onPress={handlePress}></Button>
-
-            {meal.full_nutrients ?
+         
+            <SearchBar handlePress={handlePress} query={query} setQuery={setQuery} />
+    
+            {meal.full_nutrients
+                ?
                 <>
-                    <View style={styles.rowHeader}>
-                        <View style={styles.ColHeaderSmall}><Text style={styles.textHeader}></Text></View>
-                        <View style={styles.ColHeaderBig}><Text style={styles.textHeader}>Item</Text></View>
-                        <View style={styles.ColHeaderXSmall}><Text style={styles.textHeader}>Qty</Text></View>
-                        <View style={styles.ColHeaderBig}><Text style={styles.textHeader}>Unit</Text></View>
-                        <View style={styles.ColHeaderSmall}><Text style={styles.textHeader}>Cal</Text></View>
-                    </View>
-
-                    <View style={styles.rowView}>
-                        <View style={styles.cellSmall}>
-                            <Image source={{ uri: meal.photo.thumb }} style={{ height: 50, width: 50 }}></Image>
-                        </View>
-                        <View style={styles.cellBig}>
-                            <Text style={styles.text}>{meal.food_name}</Text>
-                        </View>
-                        <View style={styles.cellXSmall}>
-                            <Text style={styles.text}>{meal.serving_qty}</Text>
-                        </View>
-                        <View style={styles.cellBig}>
-                            <Text style={styles.text}>{meal.serving_unit}</Text>
-                        </View>
-                        <View style={styles.cellSmall}>
-                            <Text style={styles.text}>{lCalories}</Text>
-                        </View>
-                    </View>
-
-                    <NutritionLabel meal={meal} clearState={clearState}/>
+                    <SearchResults meal={meal} />
+                    <NutritionLabel meal={meal} clearState={clearState} />
                 </>
                 : null
             }
@@ -85,9 +55,11 @@ export default function FoodLog() {
 const styles = StyleSheet.create({
     container: { flex: 1, paddingTop: 30, backgroundColor: '#fff' },
 
-    search: {
-        backgroundColor: "red",
-        height: 30,
+    textInput: {
+        color: "#4E709D",
+        fontSize: 25,
+        textAlign: "left",
+        marginLeft: 15,
     },
 
     rowView: {
@@ -103,7 +75,9 @@ const styles = StyleSheet.create({
         height: "95%",
         width: "20%",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        marginLeft: 3,
+
     },
 
     cellSmall: {
@@ -120,11 +94,13 @@ const styles = StyleSheet.create({
         width: "10%",
         justifyContent: "center",
     },
+
     cellBig: {
         flexDirection: "column",
         height: "95%",
         width: "30%",
-        justifyContent: "center"
+        justifyContent: "center",
+        marginLeft: 3,
     },
 
     rowHeader: {
@@ -139,6 +115,7 @@ const styles = StyleSheet.create({
         height: "95%",
         width: "20%",
         justifyContent: "flex-end",
+        marginLeft: 3,
     },
 
     ColHeaderSmall: {
@@ -146,12 +123,14 @@ const styles = StyleSheet.create({
         height: "95%",
         width: "15%",
         justifyContent: "flex-end",
+        marginLeft: 3,
     },
 
     ColHeaderXSmall: {
         flexDirection: "column",
         height: "95%",
         justifyContent: "flex-end",
+        marginLeft: 3,
     },
 
     ColHeaderBig: {
@@ -159,6 +138,7 @@ const styles = StyleSheet.create({
         height: "95%",
         width: "30%",
         justifyContent: "flex-end",
+        marginLeft: 3,
     },
 
     text: {

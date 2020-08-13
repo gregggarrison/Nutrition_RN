@@ -13,6 +13,11 @@ export default function Nav({ navigation }) {
             </View>
             <View style={styles.navButton}>
                 <View>
+                <MaterialCommunityIcons name="face-profile" size={84} color="black" onPress={() => navigation.navigate('Profile')}  />
+                </View>
+            </View>
+            <View style={styles.navButton}>
+                <View>
                     <MaterialCommunityIcons name="nutrition" size={84} color="black" onPress={() => navigation.navigate('Macro')} />
                 </View>
             </View>
@@ -22,6 +27,7 @@ export default function Nav({ navigation }) {
                 </View>
             </View>
         </View>
+
     )
 }
 
@@ -30,7 +36,7 @@ const styles = StyleSheet.create({
         height: 200,
         width: "100%",
         flexDirection: "row",
-        borderWidth: 1,
+        // borderWidth: 1,
         // backgroundColor: "#ff8584",
         justifyContent: "space-evenly",
         position: "absolute",

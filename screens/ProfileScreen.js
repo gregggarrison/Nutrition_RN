@@ -229,10 +229,11 @@ function ProfileScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#4E709D",
     },
 
     main: {
-        height: "96%",
+        height: "100%",
         backgroundColor: "#4E709D",
     },
 
@@ -318,17 +319,17 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
     },
 
-    navButton: {
-        height: 89,
-        width: "25%",
-        flexDirection: "row",
-        borderWidth: 1,
-        marginTop: 14,
-        padding: 2,
-        backgroundColor: "#F5B17B",
-        justifyContent: "center",
-        alignItems: "flex-end",
-    }
+    // navButton: {
+    //     height: 89,
+    //     width: "25%",
+    //     flexDirection: "row",
+    //     borderWidth: 1,
+    //     marginTop: 14,
+    //     padding: 2,
+    //     backgroundColor: "#F5B17B",
+    //     justifyContent: "center",
+    //     alignItems: "flex-end",
+    // }
 })
 
 export default ProfileScreen

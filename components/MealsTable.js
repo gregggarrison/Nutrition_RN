@@ -1,89 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import { Button, View, Text, StyleSheet } from 'react-native'
-import Nav from '../components/Nav'
-import { TextInput } from 'react-native-gesture-handler';
+import React from 'react'
+import { View, Text, StyleSheet, Image } from 'react-native'
 
-import SummaryHeader from '../components/SummaryHeader'
-import MealsTable from '../components/MealsTable'
-import FoodLog from './FoodLog'
-
-
-const mealsURL = "http://10.0.0.178:3000/meals/"
-
-export default function HomeScreen({ navigation }) {
-
-    const [meals, setMeals] = useState([])
-
-    const getMeals = () => {
-        fetch(mealsURL)
-            .then(response => response.json())
-            .then(meals => setMeals(meals))
-        console.log(meals)
-    }
-
-    useEffect(() => {
-        getMeals()
-    }, [])
-
-    const showMeals = () => {
-        return meals.map(meal => {
-            return (
-
-               <MealsTable meal={meal} meals={meals}/>
-            )
-        })
-    }
-
+export default function MealsTable({meal}) {
     return (
+        <>
+         
 
-
-        <View style={styles.container}>
-            <FoodLog />
-            <SummaryHeader />
-            {showMeals()}
-            <Nav navigation={navigation} />
-        </View>
+            <View style={styles.itemRow}>
+                <View style={styles.imgContainer}>
+                    <Image source={{ uri: meal.img}} style={styles.img}></Image>
+                </View>
+                <View style={styles.nameContainer}>
+                    <Text style={styles.textSummaryCenter}>{meal.foodName}</Text>
+                </View>
+                <View style={styles.qtyContainer}>
+                    <Text style={styles.textSummaryCenter}>{meal.serveQty}</Text>
+                </View>
+                <View style={styles.unitContainer}>
+                    <Text style={styles.textSummaryCenter}>{meal.serveUnit}</Text>
+                </View>
+                <View style={styles.qtyContainer}>
+                    <Text style={styles.textSummaryCenter}>{meal.calories}g</Text>
+                </View>
+            </View>
+        </>
     )
-
 }
 
 const styles = StyleSheet.create({
-
-    container: {
-        flex: 1,
-        backgroundColor: "#4E709D",
-    },
-
-    dateRow: {
-        height: 50,
-        width: "100%",
-        backgroundColor: "white",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        top: 10,
-    },
-
-    dateRowSides: {
-        height: "100%",
-        width: "20%",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-
-    dateRowCenter: {
-        height: "100%",
-        width: "60%",
-        justifyContent: "center",
-        alignItems: "center",
-    },
 
     summaryRow: {
         height: 25,
         width: "100%",
         backgroundColor: "white",
         flexDirection: "row",
-        borderWidth: 1,
+        // borderWidth: 1,
         alignItems: "center",
     },
 
@@ -127,7 +78,7 @@ const styles = StyleSheet.create({
         width: "100%",
         backgroundColor: "#B7C3D2",
         flexDirection: "row",
-        borderWidth: 1,
+        // borderWidth: 1,
         marginTop: 3,
     },
 
@@ -163,7 +114,6 @@ const styles = StyleSheet.create({
         width: "20%",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "red",
     },
 
     img: {
@@ -176,23 +126,21 @@ const styles = StyleSheet.create({
         width: "25%",
         justifyContent: "center",
         alignItems: "center",
-        borderWidth: 1,
+        // borderWidth: 1,
     },
     qtyContainer: {
         height: "100%",
         width: "15%",
         justifyContent: "center",
         alignItems: "center",
-        borderWidth: 1,
+        // borderWidth: 1,
     },
     unitContainer: {
         height: "100%",
         width: "25%",
         justifyContent: "center",
         alignItems: "center",
-        borderWidth: 1,
+        // borderWidth: 1,
     },
-
-
 
 })

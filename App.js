@@ -7,20 +7,24 @@ import HomeScreen from './screens/HomeScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import Macro from './screens/Macro'
 import FoodLog from './screens/FoodLog'
+import Nav from './components/Nav'
 
 
 const Stack = createStackNavigator();
 
-function App() {
+function App({ navigation }) {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Macro" component={Macro} />
-        <Stack.Screen name="Food Log" component={FoodLog} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <Nav navigation={navigation} />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="Macro" component={Macro} />
+          <Stack.Screen name="Food Log" component={FoodLog} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 

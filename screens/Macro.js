@@ -112,10 +112,12 @@ const styles = StyleSheet.create({
     },
 
     saveRow: {
-        height: 50,
+        height: 40,
         width: "100%",
         backgroundColor: "#F6F6F6",
         marginTop: 25,
+        bottom: 140,
+        position: "absolute",
     },
 
     row: {
@@ -189,10 +191,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginLeft: 4,
     },
-    // rightTextRight: {
-    //     fontSize: 20,
-    //     marginLeft: -1,
-    // },
+
 
     rightTextRight: {
         fontSize: 15,
@@ -208,6 +207,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
+        fontWeight: "bold",
     },
 
 })

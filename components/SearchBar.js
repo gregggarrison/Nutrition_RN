@@ -5,7 +5,7 @@ export default function SearchBar({handlePress, query, setQuery}) {
 
     return (
         <View style={styles.searchContainer}>
-            <TextInput style={styles.search} placeholder="search here" onChangeText={(text) => setQuery(text)}></TextInput>
+            <TextInput style={styles.search} value={query} placeholder="search here" onChangeText={(text) => setQuery(text)}></TextInput>
             <Button style={styles.button} title="search" onPress={handlePress}></Button>
         </View>
     )

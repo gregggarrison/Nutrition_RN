@@ -1,15 +1,41 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, Image, Button, TouchableOpacity } from 'react-native'
+import SavedNutritionLabel from './SavedNutritionLabel'
 
-export default function MealsTable({meal}) {
+export default function MealsTable({ meal, isClicked, toggleClick, clearClick }) {
+
+
+    const [ clickedMeal, setClickedMeal] = useState(null)
+
+
+
+    // const toggleActive = () => {
+    //     console.log('clickero')
+    //     setActive(!active)
+    // }
+
+
+    const handlePress = () => {
+        console.log('clickeroo')
+        console.log('meal', meal)
+        setClickedMeal(meal)
+        toggleClick(meal)
+        console.log(meal)
+        console.log('clickedmeal', clickedMeal)
+    }
     return (
         <>
-         
+        
+    
 
-            <View style={styles.itemRow}>
-                <View style={styles.imgContainer}>
-                    <Image source={{ uri: meal.img}} style={styles.img}></Image>
-                </View>
+
+            <View style={styles.itemRow} key={meal.id}>
+                <TouchableOpacity onPress={handlePress}>
+
+                    <View style={styles.imgContainer}>
+                        <Image source={{ uri: meal.img }} style={styles.img}></Image>
+                    </View>
+                </TouchableOpacity>
                 <View style={styles.nameContainer}>
                     <Text style={styles.textSummaryCenter}>{meal.foodName}</Text>
                 </View>
@@ -17,12 +43,27 @@ export default function MealsTable({meal}) {
                     <Text style={styles.textSummaryCenter}>{meal.serveQty}</Text>
                 </View>
                 <View style={styles.unitContainer}>
-                    <Text style={styles.textSummaryCenter}>{meal.serveUnit}</Text>
+                    <Text onPress={handlePress} style={styles.textSummaryCenter}>{meal.serveUnit}</Text>
                 </View>
                 <View style={styles.qtyContainer}>
                     <Text style={styles.textSummaryCenter}>{meal.calories}g</Text>
                 </View>
             </View>
+
+
+
+
+            {/* <SavedNutritionLabel meal={meal}  /> */}
+
+
+
+
+
+
+
+
+
+
         </>
     )
 }

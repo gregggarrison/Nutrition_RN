@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, TextInput, Button, Image } from 'react-native'
+import { View, Keyboard, Text, StyleSheet, TextInput, Button, Image } from 'react-native'
 import { APP_API_ID, API_KEY } from 'react-native-dotenv'
 
 import NutritionLabel from '../components/NutritionLabel'
@@ -14,8 +14,10 @@ export default function FoodLog({ navigation, toggleOn, toggleOff, addToMeals })
     const [meal, setMeal] = useState({})
 
     const handlePress = () => {
+        Keyboard.dismiss()
         toggleOn()
         setQuery("")
+        // query.clear()
         const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${query}&detailed=true`
         fetch(searchURL, {
             method: "GET",

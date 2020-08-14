@@ -1,10 +1,59 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 
+const mealsURL = "http://10.0.0.178:3000/meals/"
+
+
 export default function NutritionLabel({ meal, clearState, addToMeals }) {
+    console.log('meal', meal)
+    console.log('foodName', meal.food_name)
+
+    const [foodName, setFoodName] = useState("")
+    const [serveQty, setServeQty] = useState("")
+    const [serveUnit, setServeUnit] = useState("")
+    const [img, setImg] = useState("")
+
+    useEffect(() => {
+        setFoodName(meal.food_name)
+        setServeQty(meal.serving_qty)
+        setServeUnit(meal.serving_unit)
+        setImg(meal.photo.thumb)
+    }, [])
 
     function handlePress(meal) {
-        addToMeals(meal)
+
+        setFoodName(meal.food_name)
+        if (meal) {
+
+            const mealData = {
+                foodName: foodName,
+                serveQty: serveQty,
+                serveUnit: serveUnit,
+                calories: lCalories,
+                allFat: lTotalFat,
+                protein: lProtein,
+                carbohydrates: lCarbs,
+                cholesterol: lCholest,
+                img: img,
+                fiber: lFiber,
+                protein: lProtein,
+                satFat: lSFat,
+                sodium: lSodium,
+                sugar: lSugar,
+            }
+
+            addToMeals(mealData)
+
+            fetch(mealsURL, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(mealData)
+            })
+            clearState()
+        }
+
     }
 
     function findNutrient(id) {
@@ -17,7 +66,7 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
         const amount = nutrient ? nutrient.value : 0
         return parseFloat(amount).toFixed(decimals)
     }
-    
+
     function percentDV(nutrient, nutrientDV) {
         const amount = nutrient ? nutrient.value : 0
         return ((parseFloat(amount) / nutrientDV) * 100).toFixed(0) + "%"
@@ -51,13 +100,17 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
     const lSugar = toNumberUnits(sugar, 1)
     const sodium = findNutrient(307)
     const lSodium = toNumberUnits(sodium, 1, "mg")
-    
+
     const fiberDV = percentDV(fiber, lFiberDV)
     const sodiumDV = percentDV(sodium, sodDV)
     const totalFatDV = percentDV(totalFat, tFatDV)
     const sFatDV = percentDV(sFat, lSatFatDV)
     const carbsDV = percentDV(carbs, lCarbsDV)
     const cholestDV = percentDV(cholest, lCholestDV)
+
+    // const foodName = meal.food_name
+    // const serveQty = meal.serving_qty
+    // const serveUnit = meal.serving_unit
 
     return (
 
@@ -123,10 +176,9 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
                         <Text style={styles.textRight}></Text>
                     </View>
                 </View>
-                <View style={{flexDirection: "row", justifyContent: "space-between", marginTop: 3}}>
-                    <Button title="Add"></Button>
-                    {/* <Button onPress={handlePress()} title="Add"></Button> */}
-                    <Button onPress={() => clearState()}title="Go Back"></Button>
+                <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 3 }}>
+                    <Button onPress={handlePress} title="Add"></Button>
+                    <Button onPress={() => clearState()} title="Go Back"></Button>
                 </View>
             </View>
         </View>

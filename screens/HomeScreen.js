@@ -13,12 +13,24 @@ const mealsURL = "http://10.0.0.178:3000/meals/"
 export default function HomeScreen({ navigation }) {
 
     const [meals, setMeals] = useState([])
+    const [search, setSearch] = useState(false)
+
+    const addToMeals = ({ meal }) => {
+        setMeals([...meals, meal])
+    }
+
+    const toggleOn = () => {
+        setSearch(true)
+    }
+
+    const toggleOff = () => {
+        setSearch(false)
+    }
 
     const getMeals = () => {
         fetch(mealsURL)
             .then(response => response.json())
             .then(meals => setMeals(meals))
-        console.log(meals)
     }
 
     useEffect(() => {
@@ -28,8 +40,7 @@ export default function HomeScreen({ navigation }) {
     const showMeals = () => {
         return meals.map(meal => {
             return (
-
-               <MealsTable meal={meal} meals={meals}/>
+                <MealsTable meal={meal} meals={meals} key={meal.id} />
             )
         })
     }
@@ -38,9 +49,23 @@ export default function HomeScreen({ navigation }) {
 
 
         <View style={styles.container}>
-            <FoodLog />
-            <SummaryHeader />
-            {showMeals()}
+            <FoodLog
+                toggleOn={toggleOn}
+                toggleOff={toggleOff}
+                addToMeals={addToMeals}
+            />
+
+            {search
+
+                ? null
+                :
+                <>
+                    <SummaryHeader />
+                    {showMeals()}
+
+                </>
+
+            }
             <Nav navigation={navigation} />
         </View>
     )
@@ -51,7 +76,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: "#4E709D",
+        backgroundColor: "white",
     },
 
     dateRow: {

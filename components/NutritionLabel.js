@@ -1,7 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 
-export default function NutritionLabel({ meal, clearState }) {
+export default function NutritionLabel({ meal, clearState, addToMeals }) {
+
+    function handlePress(meal) {
+        addToMeals(meal)
+    }
 
     function findNutrient(id) {
         if (meal.full_nutrients) {
@@ -121,6 +125,7 @@ export default function NutritionLabel({ meal, clearState }) {
                 </View>
                 <View style={{flexDirection: "row", justifyContent: "space-between", marginTop: 3}}>
                     <Button title="Add"></Button>
+                    {/* <Button onPress={handlePress()} title="Add"></Button> */}
                     <Button onPress={() => clearState()}title="Go Back"></Button>
                 </View>
             </View>
@@ -138,6 +143,7 @@ const styles = StyleSheet.create({
         top: "10%",
         height: 400,
         width: "90%",
+        backgroundColor: "white",
     },
 
     borderThick: {

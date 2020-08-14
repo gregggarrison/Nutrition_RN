@@ -20,10 +20,10 @@ export default function SummaryHeader() {
 
             <View style={styles.summaryRow}>
                 <View style={styles.summaryHalf}>
-                    <Text style={styles.textSummaryLeft}>545 cal intake</Text>
+                    <Text style={styles.textSummaryLeftTop}>545 cal intake</Text>
                 </View>
                 <View style={styles.summaryHalf}>
-                    <Text style={styles.textSummaryRight}>remaining cal: 1445</Text>
+                    <Text style={styles.textSummaryRightTop}>remaining cal: 1445</Text>
                 </View>
             </View>
 
@@ -67,15 +67,14 @@ const styles = StyleSheet.create({
         marginRight: 5,
         textAlign: "right",
         fontWeight: "bold",
-
     },
 
     headerRow: {
         height: 35,
         width: "100%",
-        backgroundColor: "#B7C3D2",
+        // backgroundColor: "#B7C3D2",
         flexDirection: "row",
-        borderWidth: 1,
+        borderBottomWidth: 1,
         marginTop: 3,
     },
 
@@ -84,13 +83,17 @@ const styles = StyleSheet.create({
         width: "50%",
         justifyContent: "center",
     },
+
+
+
     textSummaryLeft: {
-        color: "#ff8584",
+        color: "#4E709D",
         // fontFamily: "Lato",
-        fontSize: 14,
+        fontSize: 22,
         marginLeft: 3,
 
     },
+
     textSummaryCenter: {
         color: "#ff8584",
         // fontFamily: "Lato",
@@ -98,9 +101,9 @@ const styles = StyleSheet.create({
         textAlign: "center",
 
     },
-    textSummaryRight: {
+
+    textSummaryRightTop: {
         color: "#ff8584",
-        // fontFamily: "Lato",
         fontSize: 14,
         marginRight: 3,
         textAlign: "right",
@@ -139,9 +142,9 @@ const styles = StyleSheet.create({
     summaryRow: {
         height: 25,
         width: "100%",
-        backgroundColor: "white",
+        // backgroundColor: "white",
         flexDirection: "row",
-        borderWidth: 1,
+        borderBottomWidth: 1,
         alignItems: "center",
     },
 
@@ -157,27 +160,41 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
-    textSummaryLeft: {
+
+    textSummaryLeftTop: {
+        color: "#4E709D",
+        // fontFamily: "Lato",
+        fontSize: 14,
+        marginLeft: 3,
+    },
+    textSummaryLeftTop: {
+
         color: "#ff8584",
         // fontFamily: "Lato",
         fontSize: 14,
         marginLeft: 3,
-
     },
+    textSummaryLeft: {
+        color: "#4E709D",
+        // fontFamily: "Lato",
+        fontSize: 14,
+        marginLeft: 3,
+    },
+
     textSummaryCenter: {
-        color: "#ff8584",
+        color: "#4E709D",
         // fontFamily: "Lato",
         fontSize: 14,
         textAlign: "center",
-
     },
+
     textSummaryRight: {
-        color: "#ff8584",
+        color: "#4E709D",
+
         // fontFamily: "Lato",
         fontSize: 14,
         marginRight: 3,
         textAlign: "right",
-
     },
 
 })

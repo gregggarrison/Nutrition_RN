@@ -8,12 +8,13 @@ import SearchBar from '../components/SearchBar'
 import Nav from '../components/Nav'
 
 
-export default function FoodLog({ navigation }) {
+export default function FoodLog({ navigation, toggleOn, toggleOff, addToMeals }) {
 
     const [query, setQuery] = useState("")
     const [meal, setMeal] = useState({})
 
     const handlePress = () => {
+        toggleOn()
         setQuery("")
         const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${query}&detailed=true`
         fetch(searchURL, {
@@ -28,6 +29,7 @@ export default function FoodLog({ navigation }) {
     }
 
     const clearState = () => {
+        toggleOff()
         setMeal({})
     }
 
@@ -39,7 +41,7 @@ export default function FoodLog({ navigation }) {
                 ?
                 <>
                     <SearchResults meal={meal} />
-                    <NutritionLabel meal={meal} clearState={clearState} />
+                    <NutritionLabel meal={meal} clearState={clearState} addToMeals={addToMeals} />
                 </>
                 : null
             }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 
-export default function SearchResults({meal}) {
+export default function SearchResults({ meal }) {
 
     function findNutrient(id) {
         if (meal.full_nutrients) {
@@ -16,7 +16,7 @@ export default function SearchResults({meal}) {
 
     const calories = findNutrient(208)
     const lCalories = toNumberUnits(calories, 0)
-  
+
     return (
         <>
             <View style={styles.rowHeader}>
@@ -49,42 +49,8 @@ export default function SearchResults({meal}) {
 }
 
 const styles = StyleSheet.create({
+
     container: { flex: 1, paddingTop: 30, backgroundColor: '#fff' },
-
-    search: {
-        backgroundColor: "white",
-        height: 40,
-        width: "70%",
-        marginLeft: -20,
-        color: "#4E709D",
-        fontSize: 25,
-        marginBottom: 15,
-        marginTop: 15,
-        textAlign: 'center'
-    },
-
-    searchContainer: {
-        flexDirection: "row",
-        width: "100%",
-        alignItems: "center",
-        top: -10,
-        borderBottomWidth: 1,
-        backgroundColor: "#4E709D",
-        justifyContent: "center"
-    },
-
-    button: {
-        backgroundColor: "#ff8584",
-        color: "#ff8584",
-        borderWidth: 1,
-    },
-
-    textInput: {
-        color: "#4E709D",
-        fontSize: 25,
-        textAlign: "left",
-        marginLeft: 15,
-    },
 
     rowView: {
         height: 70,
@@ -92,16 +58,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         marginLeft: 3,
-    },
-
-    cell: {
-        flexDirection: "column",
-        height: "95%",
-        width: "20%",
-        alignItems: "center",
-        justifyContent: "center",
-        marginLeft: 3,
-
     },
 
     cellSmall: {
@@ -134,14 +90,6 @@ const styles = StyleSheet.create({
         marginLeft: 3,
     },
 
-    ColHeader: {
-        flexDirection: "column",
-        height: "95%",
-        width: "20%",
-        justifyContent: "flex-end",
-        marginLeft: 3,
-    },
-
     ColHeaderSmall: {
         flexDirection: "column",
         height: "95%",
@@ -168,21 +116,5 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
         textAlign: "center",
-    },
-
-    textHeader: {
-        fontSize: 15,
-        textAlign: "center",
-        fontWeight: "bold",
-    },
-
-    textRight: {
-        fontSize: 15,
-        textAlign: "right",
-    },
-
-    textLeft: {
-        fontSize: 15,
-        textAlign: "left",
     },
 })

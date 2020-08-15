@@ -1,12 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 
 const mealsURL = "http://10.0.0.178:3000/meals/"
 
-
 export default function NutritionLabel({ meal, clearState, addToMeals }) {
-    console.log('meal', meal)
-    console.log('foodName', meal.food_name)
 
     const [foodName, setFoodName] = useState("")
     const [serveQty, setServeQty] = useState("")
@@ -21,10 +18,9 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
     }, [])
 
     function handlePress(meal) {
-
         setFoodName(meal.food_name)
-        if (meal) {
 
+        if (meal) {
             const mealData = {
                 foodName: foodName,
                 serveQty: serveQty,
@@ -53,7 +49,6 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
             })
             clearState()
         }
-
     }
 
     function findNutrient(id) {
@@ -108,16 +103,10 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
     const carbsDV = percentDV(carbs, lCarbsDV)
     const cholestDV = percentDV(cholest, lCholestDV)
 
-    // const foodName = meal.food_name
-    // const serveQty = meal.serving_qty
-    // const serveUnit = meal.serving_unit
-
     return (
-
         <View style={styles.container}>
             <View style={styles.labelContainer}>
                 <View style={styles.borderThick}></View>
-
                 <View style={styles.rowView}>
                     <Text style={{ textAlign: "left", fontWeight: "bold", left: 9 }}>Calories  {lCalories}</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
@@ -182,7 +171,6 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
                 </View>
             </View>
         </View>
-
     );
 }
 

@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
 import Nav from '../components/Nav'
 
-export default function Macro({navigation}) {
+export default function Macro({ navigation }) {
 
     const [kcal, setKcal] = useState(2370)
     const [carbP, setCarbP] = useState(.30)
@@ -20,86 +20,84 @@ export default function Macro({navigation}) {
 
         <View style={styles.container}>
 
-                <View style={styles.row}>
-                    <View style={styles.leftSide}>
-                        <Text style={styles.leftText}>Daily Calories Goal:</Text>
+            <View style={styles.row}>
+                <View style={styles.leftSide}>
+                    <Text style={styles.leftText}>Daily Calories Goal:</Text>
+                </View>
+                <View style={styles.rightSide}>
+                    <TextInput onChangeText={(text) => setKcal(text)} style={styles.textInput}>{kcal}</TextInput>
+                    <Text style={styles.rightText}>kcal</Text>
+                </View>
+            </View>
+
+            <View style={styles.rows}>
+                <View style={styles.leftSideRows}>
+                    <View style={styles.leftTop}>
+                        <Text style={styles.leftSmallText}>
+                            % of calories from
+                            </Text>
                     </View>
-                    <View style={styles.rightSide}>
-                        <TextInput onChangeText={(text) => setKcal(text)} style={styles.textInput}>{kcal}</TextInput>
-                        <Text style={styles.rightText}>kcal</Text>
+                    <View style={styles.leftBottom}>
+                        <Text style={styles.leftText}>
+                            Carbohydrates:
+                            </Text>
                     </View>
                 </View>
 
-                <View style={styles.rows}>
-                    <View style={styles.leftSideRows}>
-                        <View style={styles.leftTop}>
-                            <Text style={styles.leftSmallText}>
-                                % of calories from
-                            </Text>
-                        </View>
-                        <View style={styles.leftBottom}>
-                            <Text style={styles.leftText}>
-                                Carbohydrates:
-                            </Text>
-                        </View>
-                    </View>
-
-                    <View style={styles.rightSide}>
-                        <TextInput onChangeText={(text) => setCarbP(text/100)} style={styles.textInput}>{(Math.floor(carbP * 100))}</TextInput>
-                        <Text style={styles.rightText}>%</Text>
-                        <Text style={styles.rightTextRight}>{carbP * kcal}g</Text>
-                    </View>
-
+                <View style={styles.rightSide}>
+                    <TextInput onChangeText={(text) => setCarbP(text / 100)} style={styles.textInput}>{(Math.floor(carbP * 100))}</TextInput>
+                    <Text style={styles.rightText}>%</Text>
+                    <Text style={styles.rightTextRight}>{carbP * kcal}g</Text>
                 </View>
-                <View style={styles.rows}>
-                    <View style={styles.leftSideRows}>
-                        <View style={styles.leftTop}>
-                            <Text style={styles.leftSmallText}>
-                                % of calories from
-                            </Text>
-                        </View>
-                        <View style={styles.leftBottom}>
-                            <Text style={styles.leftText}>
-                                Protein:
-                            </Text>
-                        </View>
-                    </View>
+            </View>
 
-                    <View style={styles.rightSide}>
-                        <TextInput onChangeText={(text) => setProtP(text/100)} style={styles.textInput}>{protP * 100}</TextInput>
-                        <Text style={styles.rightText}>%</Text>
-                        <Text style={styles.rightTextRight}>{protP * kcal}g</Text>
-                    </View>
-
-                </View>
-                <View style={styles.rows}>
-                    <View style={styles.leftSideRows}>
-                        <View style={styles.leftTop}>
-                            <Text style={styles.leftSmallText}>
-                                % of calories from
+            <View style={styles.rows}>
+                <View style={styles.leftSideRows}>
+                    <View style={styles.leftTop}>
+                        <Text style={styles.leftSmallText}>
+                            % of calories from
                             </Text>
-                        </View>
-                        <View style={styles.leftBottom}>
-                            <Text style={styles.leftText}>
-                                Fat:
+                    </View>
+                    <View style={styles.leftBottom}>
+                        <Text style={styles.leftText}>
+                            Protein:
                             </Text>
-                        </View>
                     </View>
-
-                    <View style={styles.rightSide}>
-                        <TextInput onChangeText={(text)=> setFatP(text/100)} style={styles.textInput}>{fatP * 100}</TextInput>
-                        <Text style={styles.rightText}>%</Text>
-                        <Text style={styles.rightTextRight}>{fatP * kcal}g</Text>
-                    </View>
-
                 </View>
 
-                <View style={styles.saveRow}>
-                    <Button title="Save" onPress={()=>{handlePress()}}></Button>
+                <View style={styles.rightSide}>
+                    <TextInput onChangeText={(text) => setProtP(text / 100)} style={styles.textInput}>{protP * 100}</TextInput>
+                    <Text style={styles.rightText}>%</Text>
+                    <Text style={styles.rightTextRight}>{protP * kcal}g</Text>
+                </View>
+            </View>
+
+            <View style={styles.rows}>
+                <View style={styles.leftSideRows}>
+                    <View style={styles.leftTop}>
+                        <Text style={styles.leftSmallText}>
+                            % of calories from
+                            </Text>
+                    </View>
+                    <View style={styles.leftBottom}>
+                        <Text style={styles.leftText}>
+                            Fat:
+                            </Text>
+                    </View>
                 </View>
 
-                <Nav navigation={navigation} />
+                <View style={styles.rightSide}>
+                    <TextInput onChangeText={(text) => setFatP(text / 100)} style={styles.textInput}>{fatP * 100}</TextInput>
+                    <Text style={styles.rightText}>%</Text>
+                    <Text style={styles.rightTextRight}>{fatP * kcal}g</Text>
+                </View>
+            </View>
 
+            <View style={styles.saveRow}>
+                <Button title="Save" onPress={() => { handlePress() }}></Button>
+            </View>
+
+            <Nav navigation={navigation} />
         </View>
     )
 }
@@ -144,7 +142,7 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "50%",
         justifyContent: "flex-end",
-        alignItems: "center",    
+        alignItems: "center",
         marginTop: 3,
     },
 
@@ -152,7 +150,7 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "50%",
         justifyContent: "flex-end",
-        alignItems: "center",    
+        alignItems: "center",
     },
 
     leftTop: {
@@ -191,7 +189,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginLeft: 4,
     },
-
 
     rightTextRight: {
         fontSize: 15,

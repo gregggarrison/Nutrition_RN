@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Button, View, Text, StyleSheet, ActionSheetIOS } from 'react-native'
+import { View, Text, StyleSheet, ActionSheetIOS } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
-import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import Nav from '../components/Nav'
 
-function ProfileScreen({ navigation }) {
+export default function ProfileScreen({ navigation }) {
 
-    const [username, setUsername] = useState('')
-    const [age, setAge] = useState(null)
-    const [height, setHeight] = useState(null)
-    const [weight, setWeight] = useState(null)
-    const [sex, setSex] = useState("")
+    const [username, setUsername] = useState('Gregg')
+    const [age, setAge] = useState("35")
+    const [height, setHeight] = useState("74")
+    const [weight, setWeight] = useState("235")
+    const [sex, setSex] = useState("male")
     const [BMR, setBMR] = useState(null)
-    const [activityLevel, setActivityLevel] = useState('')
+    const [activityLevel, setActivityLevel] = useState('slightly active')
 
 
     const handlePress = () => {
@@ -98,7 +97,6 @@ function ProfileScreen({ navigation }) {
     }
 
     return (
-
         <View style={styles.container}>
             <View style={styles.main}>
                 <View style={styles.profileContainer}>
@@ -176,7 +174,7 @@ function ProfileScreen({ navigation }) {
                     <View style={styles.header}>
                         <Text style={styles.textHeader}>Recomended Calories:</Text>
                     </View>
-               
+
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>BMR:</Text>
@@ -318,18 +316,4 @@ const styles = StyleSheet.create({
         color: "#ff8584",
         justifyContent: "space-evenly",
     },
-
-    // navButton: {
-    //     height: 89,
-    //     width: "25%",
-    //     flexDirection: "row",
-    //     borderWidth: 1,
-    //     marginTop: 14,
-    //     padding: 2,
-    //     backgroundColor: "#F5B17B",
-    //     justifyContent: "center",
-    //     alignItems: "flex-end",
-    // }
 })
-
-export default ProfileScreen

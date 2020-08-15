@@ -17,7 +17,6 @@ export default function SummaryHeader() {
                     <AntDesign name="arrowright" size={30} color="black" />
                 </View>
             </View>
-
             <View style={styles.summaryRow}>
                 <View style={styles.summaryHalf}>
                     <Text style={styles.textSummaryLeftTop}>545 cal intake</Text>
@@ -26,7 +25,6 @@ export default function SummaryHeader() {
                     <Text style={styles.textSummaryRightTop}>remaining cal: 1445</Text>
                 </View>
             </View>
-
             <View style={styles.summaryRow}>
                 <View style={styles.summaryThird}>
                     <Text style={styles.textSummaryLeft}>4g Protein</Text>
@@ -53,6 +51,11 @@ export default function SummaryHeader() {
 
 const styles = StyleSheet.create({
 
+    container: {
+        flex: 1,
+        backgroundColor: "#4E709D",
+    },
+
     textHeaderLeft: {
         color: "#ff8584",
         fontSize: 20,
@@ -72,7 +75,6 @@ const styles = StyleSheet.create({
     headerRow: {
         height: 35,
         width: "100%",
-        // backgroundColor: "#B7C3D2",
         flexDirection: "row",
         borderBottomWidth: 1,
         marginTop: 3,
@@ -84,22 +86,26 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
-
+    textSummaryLeftTop: {
+        fontWeight: "bold",
+        fontSize: 14,
+        textAlign: "left",
+        marginLeft: 3,
+        color: "#ff8584",
+    },
 
     textSummaryLeft: {
         color: "#4E709D",
-        // fontFamily: "Lato",
-        fontSize: 22,
+        fontSize: 14,
         marginLeft: 3,
-
+        fontWeight: "bold",
     },
 
     textSummaryCenter: {
-        color: "#ff8584",
-        // fontFamily: "Lato",
+        color: "#4E709D",
         fontSize: 14,
         textAlign: "center",
-
+        fontWeight: "bold"
     },
 
     textSummaryRightTop: {
@@ -107,12 +113,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginRight: 3,
         textAlign: "right",
-
-    },
-
-    container: {
-        flex: 1,
-        backgroundColor: "#4E709D",
+        fontWeight: "bold"
     },
 
     dateRow: {
@@ -142,16 +143,9 @@ const styles = StyleSheet.create({
     summaryRow: {
         height: 25,
         width: "100%",
-        // backgroundColor: "white",
         flexDirection: "row",
         borderBottomWidth: 1,
         alignItems: "center",
-    },
-
-    summaryHalf: {
-        height: "100%",
-        width: "50%",
-        justifyContent: "center",
     },
 
     summaryThird: {
@@ -160,41 +154,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
-
-    textSummaryLeftTop: {
-        color: "#4E709D",
-        // fontFamily: "Lato",
-        fontSize: 14,
-        marginLeft: 3,
-    },
-    textSummaryLeftTop: {
-
-        color: "#ff8584",
-        // fontFamily: "Lato",
-        fontSize: 14,
-        marginLeft: 3,
-    },
-    textSummaryLeft: {
-        color: "#4E709D",
-        // fontFamily: "Lato",
-        fontSize: 14,
-        marginLeft: 3,
-    },
-
-    textSummaryCenter: {
-        color: "#4E709D",
-        // fontFamily: "Lato",
-        fontSize: 14,
-        textAlign: "center",
-    },
-
     textSummaryRight: {
         color: "#4E709D",
-
-        // fontFamily: "Lato",
         fontSize: 14,
         marginRight: 3,
         textAlign: "right",
+        fontWeight: "bold"
     },
-
 })

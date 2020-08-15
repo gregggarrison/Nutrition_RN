@@ -1,10 +1,9 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 
-export default function SavedNutritionLabel({meal, clearClick}) {
-    console.log(meal.calories)
-    return (
+export default function SavedNutritionLabel({ meal, clearClick }) {
 
+    return (
         <View style={styles.container}>
             <View style={styles.labelContainer}>
                 <View style={styles.borderThick}></View>
@@ -12,7 +11,7 @@ export default function SavedNutritionLabel({meal, clearClick}) {
                 <View style={styles.rowView}>
                     <Text style={{ textAlign: "left", fontWeight: "bold", left: 9 }}>Calories  {meal.calories}</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                        <Text style={{ textAlign: "right", marginRight: 10 }}>Calories from Fat {meal.allFat * 9}</Text>
+                        <Text style={{ textAlign: "right", marginRight: 10 }}>Calories from Fat {Math.floor(meal.allFat * 9)}</Text>
                     </View>
                 </View>
                 <View style={styles.borderThin}></View>

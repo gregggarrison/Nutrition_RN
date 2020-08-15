@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 
 
@@ -13,7 +13,7 @@ export default function Nav({ navigation }) {
             </View>
             <View style={styles.navButton}>
                 <View>
-                <MaterialCommunityIcons name="face-profile" size={84} color="black" onPress={() => navigation.navigate('Profile')}  />
+                    <MaterialCommunityIcons name="face-profile" size={84} color="black" onPress={() => navigation.navigate('Profile')} />
                 </View>
             </View>
             <View style={styles.navButton}>
@@ -27,7 +27,6 @@ export default function Nav({ navigation }) {
                 </View>
             </View>
         </View>
-
     )
 }
 
@@ -36,8 +35,6 @@ const styles = StyleSheet.create({
         height: 200,
         width: "100%",
         flexDirection: "row",
-        // borderWidth: 1,
-        // backgroundColor: "#ff8584",
         justifyContent: "space-evenly",
         position: "absolute",
         bottom: -80,
@@ -53,6 +50,5 @@ const styles = StyleSheet.create({
         backgroundColor: "#F5B17B",
         justifyContent: "center",
         alignItems: "flex-end",
-
     }
 })

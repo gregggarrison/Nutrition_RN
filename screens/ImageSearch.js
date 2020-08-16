@@ -5,16 +5,16 @@ import { APP_API_ID, API_KEY } from 'react-native-dotenv'
 import NutritionLabel from '../components/NutritionLabel'
 import SearchResults from '../components/SearchResults'
 import SearchBar from '../components/SearchBar'
+import Cam from '../components/Cam'
 
-export default function FoodLog({ toggleOn, toggleOff, addToMeals }) {
+export default function ImageSearch({ toggleOn, toggleOff, addToMeals, navigation }) {
 
-    const [query, setQuery] = useState("")
+    const [query, setQuery] = useState(null)
     const [meal, setMeal] = useState({})
 
     const handlePress = () => {
-        Keyboard.dismiss()
-        toggleOn()
-        setQuery("")
+        // toggleOn()
+        // setQuery("")
         const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${query}&detailed=true`
         fetch(searchURL, {
             method: "GET",
@@ -24,7 +24,7 @@ export default function FoodLog({ toggleOn, toggleOff, addToMeals }) {
             }
         }).then(response => response.json())
             .then(meal => setMeal(meal.common[0]))
-            .then(console.log(meal))
+        // .then(console.log(meal))
     }
 
     const clearState = () => {
@@ -33,21 +33,7 @@ export default function FoodLog({ toggleOn, toggleOff, addToMeals }) {
     }
 
     return (
-        <View>
-            <SearchBar handlePress={handlePress} query={query} setQuery={setQuery} />
-
-            {meal.full_nutrients
-                ?
-                <>
-                    <SearchResults meal={meal} />
-                    <NutritionLabel meal={meal} clearState={clearState} addToMeals={addToMeals} />
-                </>
-                : null
-            }
-
-            {/* <Nav navigation={navigation} /> */}
-
-        </View>
+        <Cam setQuery={setQuery} handlePress={handlePress} />
     )
 }
 

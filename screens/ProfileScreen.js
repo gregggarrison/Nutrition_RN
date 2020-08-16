@@ -13,7 +13,6 @@ export default function ProfileScreen({ navigation }) {
     const [BMR, setBMR] = useState(null)
     const [activityLevel, setActivityLevel] = useState('slightly active')
 
-
     const handlePress = () => {
         ActionSheetIOS.showActionSheetWithOptions(
             {

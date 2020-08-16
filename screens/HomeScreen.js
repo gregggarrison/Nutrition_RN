@@ -4,7 +4,7 @@ import Nav from '../components/Nav'
 
 import SummaryHeader from '../components/SummaryHeader'
 import MealsTable from '../components/MealsTable'
-import FoodLog from './FoodLog'
+import FoodLog from '../components/FoodLog'
 import SavedNutritionLabel from '../components/SavedNutritionLabel'
 
 const mealsURL = "http://10.0.0.178:3000/meals/"

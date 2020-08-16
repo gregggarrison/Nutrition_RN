@@ -23,7 +23,7 @@ export default function Nav({ navigation }) {
             </View>
             <View style={styles.navButton}>
                 <View>
-                    <FontAwesome5 style={{ marginBottom: 4 }} name="nutritionix" size={84} color="black" onPress={() => navigation.navigate('Food Log')} />
+                    <FontAwesome5 style={{ marginBottom: 4 }} name="nutritionix" size={84} color="black" onPress={() => navigation.navigate('Image Search')} />
                 </View>
             </View>
         </View>

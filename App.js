@@ -10,6 +10,7 @@ import ProfileScreen from './screens/ProfileScreen'
 import Macro from './screens/Macro'
 import FoodLog from './screens/FoodLog'
 import Nav from './components/Nav'
+import ImageSearch from './screens/ImageSearch'
 
 
 const Stack = createStackNavigator();
@@ -23,7 +24,7 @@ function App({ navigation }) {
           <Stack.Screen name="Home" component={HomeScreen} options={{headerStyle: {backgroundColor:"#F5B17B"  }}} />
           <Stack.Screen name="Profile" component={ProfileScreen}  options={{headerStyle: {backgroundColor:"#F5B17B"  }}} />
           <Stack.Screen name="Macro" component={Macro}  options={{headerStyle: {backgroundColor:"#F5B17B"  }}} />
-          <Stack.Screen name="Food Log" component={FoodLog}  options={{headerStyle: {backgroundColor:"#F5B17B"  }}}/>               
+          <Stack.Screen name="Image Search" component={ImageSearch}  options={{headerStyle: {backgroundColor:"#F5B17B"  }}}/>               
         </Stack.Navigator>
       </NavigationContainer>
     </>

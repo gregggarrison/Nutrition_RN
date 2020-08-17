@@ -4,8 +4,6 @@ import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { IMG_API_KEY } from 'react-native-dotenv'
-import SumamryHeader from './SummaryHeader'
-import HomeScreen from '../screens/HomeScreen'
 import { APP_API_ID, API_KEY } from 'react-native-dotenv'
 
 
@@ -66,13 +64,12 @@ export default class Cam extends Component {
     }
 
     displayAnswer(identifiedImage) {
-        // Dismiss the acitivty indicator
         this.setState({
             query: identifiedImage,
             loading: false,
             isActive: true,
         });
-        
+
         const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${this.state.query}&detailed=true`
         fetch(searchURL, {
             method: "GET",
@@ -81,15 +78,15 @@ export default class Cam extends Component {
                 "x-app-key": API_KEY
             }
         }).then(response => response.json())
-            .then(meal => this.props.navigation.navigate("Home", {searchMeal: meal.common[0]}))
+            .then(meal => this.props.navigation.navigate("Home", { searchMeal: meal.common[0] }))
 
         // Show an alert with the answer on
-        Alert.alert(
-            this.state.query,
-            '',
-            
-            { cancelable: false }
-        )
+        // Alert.alert(
+        //     this.state.query,
+        //     '',
+
+        //     { cancelable: false }
+        // )
         // Resume the preview
         this.camera.resumePreview();
     }
@@ -107,44 +104,32 @@ export default class Cam extends Component {
 
                 <View style={{ flex: 1 }}>
 
-                    {this.state.isActive
+                    <Camera style={{ flex: 1 }} type={this.state.cameraType} ref={ref => { this.camera = ref }}>
+                        <ActivityIndicator size="large" style={styles.loadingIndicator} color="#fff" animating={this.state.loading} />
+                        <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between", margin: 20 }}>
 
-                        ?
-                        <View style={{ alignItems: "center", justifyContent: "center", top: 100 }}>
-                            <Text>Hello</Text>
-                            <Button title="camera" onPress={() => this.setState({ isActive: false })}></Button>
-                            <Button title="test" onPress={()=> console.log(this.state.query)}></Button>
+                            <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
+                                onPress={() => this.setState({ isActive: true })}
+                            >
+                                <Ionicons name="ios-photos" style={{ color: "#fff", fontSize: 40 }} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent', }}
+                                onPress={() => this.takePicture()}
+                            >
+                                <FontAwesome name="camera" style={{ color: "#fff", fontSize: 40 }} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
+                                onPress={() => this.handleCameraType()}
+                            >
+                                <MaterialCommunityIcons name="camera-switch" style={{ color: "#fff", fontSize: 40 }} />
+                            </TouchableOpacity>
+
                         </View>
+                    </Camera>
 
-                        // <HomeScreen />
-
-                        :
-                        <Camera style={{ flex: 1 }} type={this.state.cameraType} ref={ref => { this.camera = ref }}>
-                            <ActivityIndicator size="large" style={styles.loadingIndicator} color="#fff" animating={this.state.loading} />
-                            <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between", margin: 20 }}>
-
-                                <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
-                                    onPress={()=> this.setState({isActive: true})}
-                                >
-                                    <Ionicons name="ios-photos" style={{ color: "#fff", fontSize: 40 }} />
-                                </TouchableOpacity>
-
-                                <TouchableOpacity
-                                    style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent', }}
-                                    onPress={() => this.takePicture()}
-                                >
-                                    <FontAwesome name="camera" style={{ color: "#fff", fontSize: 40 }} />
-                                </TouchableOpacity>
-
-                                <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
-                                    onPress={() => this.handleCameraType()}
-                                >
-                                    <MaterialCommunityIcons name="camera-switch" style={{ color: "#fff", fontSize: 40 }} />
-                                </TouchableOpacity>
-
-                            </View>
-                        </Camera>
-                    }
                 </View>
             );
         }

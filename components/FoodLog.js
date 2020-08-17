@@ -54,12 +54,6 @@ export default function FoodLog({ toggleSearch, addToMeals, date }) {
 
     return (
         <View>
-
-            {imageSearch
-                ? <Cam handleClick={handleClick} query={query} setQuery={setQuery} />
-                : null
-            }
-
                 <>
                     <SearchBar handlePress={handlePress} query={query} setQuery={setQuery} toggleImageSearch={toggleImageSearch} />
                     {meal.full_nutrients
@@ -71,7 +65,6 @@ export default function FoodLog({ toggleSearch, addToMeals, date }) {
                         : null
                     }
                 </>
-
         </View>
     )
 }

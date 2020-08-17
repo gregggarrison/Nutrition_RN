@@ -6,14 +6,14 @@ import Nav from '../components/Nav'
 
 export default function Macro({ navigation }) {
 
-    const [kcal, setKcal] = useState(2370)
+    const [kcal, setKcal] = useState(2346)
     const [carbP, setCarbP] = useState(.30)
     const [protP, setProtP] = useState(.40)
     const [fatP, setFatP] = useState(.30)
 
     const handlePress = () => {
         console.log('clicked')
-        alert('hi')
+        alert('values saved')
     }
 
     return (
@@ -66,7 +66,7 @@ export default function Macro({ navigation }) {
                 </View>
 
                 <View style={styles.rightSide}>
-                    <TextInput onChangeText={(text) => setProtP(text / 100)} style={styles.textInput}>{protP * 100}</TextInput>
+                    <TextInput onChangeText={(text) => setProtP(text / 100)} style={styles.textInput}>{(Math.floor(protP * 100))}</TextInput>
                     <Text style={styles.rightText}>%</Text>
                     <Text style={styles.rightTextRight}>{protP * kcal}g</Text>
                 </View>

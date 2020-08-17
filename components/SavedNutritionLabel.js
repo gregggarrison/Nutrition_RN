@@ -8,6 +8,35 @@ export default function SavedNutritionLabel({ meal, clearClick, deleteMeal }) {
         deleteMeal(meal)
     }
 
+
+    function percentDV(nutrient, nutrientDV) {
+        const amount = nutrient ? nutrient.value : 0
+        return ((parseFloat(amount) / nutrientDV) * 100).toFixed(0) + "%"
+    }
+
+    let sodDV = 2400
+    let lSatFatDV = 20
+    let tFatDV = 65
+    let lCarbsDV = 300
+    let lCholestDV = 300
+    let lFiberDV = 25
+
+    // const fiberDV = percentDV(meal.fiber, lFiberDV)
+
+    // const sodiumDV = percentDV(meal.sodium, sodDV)
+    // const totalFatDV = percentDV(meal.totalFat, tFatDV)
+    const totalFatDV = Math.floor((meal.allFat / tFatDV) * 100)
+    const sFatDV = Math.floor((meal.satFat / lSatFatDV) * 100)
+    const cholestDV = Math.floor((meal.cholesterol / lCholestDV) * 100)
+    const fiberDV = Math.floor((meal.fiber / lFiberDV) * 100)
+    const sodiumDV = Math.floor((meal.sodium / sodDV) * 100)
+
+
+    // const sFatDV =(Math.floor (meal.satFat / lSatFatDV) * 100)
+    const carbsDV = Math.floor((meal.carbohydrates / lCarbsDV) * 100)
+
+    // console.log(meal.totalFat)
+
     return (
         <View style={styles.container}>
             <View style={styles.labelContainer}>
@@ -26,37 +55,37 @@ export default function SavedNutritionLabel({ meal, clearClick, deleteMeal }) {
                 <View style={styles.bottomBorder}>
                     <Text style={styles.textLeft}>Total Fat {meal.allFat} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                        <Text style={styles.textRight}>X</Text>
+                        <Text style={styles.textRight}>{totalFatDV}%</Text>
                     </View>
                 </View>
                 <View style={styles.bottomBorder}>
                     <Text style={{ marginLeft: 10 }}>Saturated Fat {meal.satFat} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                        <Text style={styles.textRight}>X</Text>
+                        <Text style={styles.textRight}>{sFatDV}%</Text>
                     </View>
                 </View>
                 <View style={styles.bottomBorder}>
-                    <Text style={styles.textLeft}>Cholesterol {meal.cholesterool} mg</Text>
+                    <Text style={styles.textLeft}>Cholesterol {meal.cholesterol} mg</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                        <Text style={styles.textRight}>X</Text>
+                        <Text style={styles.textRight}>{cholestDV}%</Text>
                     </View>
                 </View>
                 <View style={styles.bottomBorder}>
                     <Text style={styles.textLeft}>Sodium {meal.sodium} mg</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                        <Text style={styles.textRight}>X</Text>
+                        <Text style={styles.textRight}>{sodiumDV}%</Text>
                     </View>
                 </View>
                 <View style={styles.bottomBorder}>
-                    <Text style={styles.textLeft}>Total Carbohydrates {meal.carboydrates} g</Text>
+                    <Text style={styles.textLeft}>Total Carbohydrates {meal.carbohydrates} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                        <Text style={styles.textRight}>X</Text>
+                        <Text style={styles.textRight}>{carbsDV}%</Text>
                     </View>
                 </View>
                 <View style={styles.bottomBorder}>
                     <Text style={{ marginLeft: 10 }}>Dietary Fiber {meal.fiber} g</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                        <Text style={styles.textRight}>X</Text>
+                        <Text style={styles.textRight}>{fiberDV}%</Text>
                     </View>
                 </View>
                 <View style={styles.bottomBorder}>

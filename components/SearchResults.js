@@ -52,6 +52,13 @@ const styles = StyleSheet.create({
 
     container: { flex: 1, paddingTop: 30, backgroundColor: '#fff' },
 
+    textHeader: {
+        color: "#4E709D",
+        fontSize: 14,
+        textAlign: "center",
+        fontWeight: "bold",
+    },
+
     rowView: {
         height: 70,
         width: "100%",

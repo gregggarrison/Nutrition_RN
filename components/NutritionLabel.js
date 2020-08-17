@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 
 const mealsURL = "http://10.0.0.178:3000/meals/"
 
-export default function NutritionLabel({ meal, clearState, addToMeals }) {
+export default function NutritionLabel({ meal, clearState, addToMeals, date }) {
 
     const [foodName, setFoodName] = useState("")
     const [serveQty, setServeQty] = useState("")
@@ -36,17 +36,12 @@ export default function NutritionLabel({ meal, clearState, addToMeals }) {
                 satFat: lSFat,
                 sodium: lSodium,
                 sugar: lSugar,
+                user_id: 1
             }
 
             addToMeals(mealData)
 
-            fetch(mealsURL, {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                },
-                body: JSON.stringify(mealData)
-            })
+         
             clearState()
         }
     }

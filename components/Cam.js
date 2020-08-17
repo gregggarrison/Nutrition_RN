@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet, ActivityIndicator, Dimensions, Alert } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, ActivityIndicator, Dimensions, Alert, Button } from 'react-native'
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { IMG_API_KEY } from 'react-native-dotenv'
+import SumamryHeader from './SummaryHeader'
+import HomeScreen from '../screens/HomeScreen'
+
 
 export default class Cam extends Component {
 
@@ -12,6 +15,7 @@ export default class Cam extends Component {
         type: Camera.Constants.Type.back,
         query: null,
         loading: false,
+        isActive: false,
     }
 
     async componentDidMount() {
@@ -62,8 +66,9 @@ export default class Cam extends Component {
     displayAnswer(identifiedImage) {
         // Dismiss the acitivty indicator
         this.setState({
-            identifedAs: identifiedImage,
+            query: identifiedImage,
             loading: false,
+            isActive: true,
         });
         // Show an alert with the answer on
         Alert.alert(
@@ -87,29 +92,44 @@ export default class Cam extends Component {
             return (
 
                 <View style={{ flex: 1 }}>
-                    <Camera style={{ flex: 1 }} type={this.state.cameraType} ref={ref => { this.camera = ref }}>
-                        <ActivityIndicator size="large" style={styles.loadingIndicator} color="#fff" animating={this.state.loading} />
-                        <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between", margin: 20 }}>
 
-                            <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }} >
-                                <Ionicons name="ios-photos" style={{ color: "#fff", fontSize: 40 }} />
-                            </TouchableOpacity>
+                    {this.state.isActive
 
-                            <TouchableOpacity
-                                style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent', }}
-                                onPress={() => this.takePicture()}
-                            >
-                                <FontAwesome name="camera" style={{ color: "#fff", fontSize: 40 }} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
-                                onPress={() => this.handleCameraType()}
-                            >
-                                <MaterialCommunityIcons name="camera-switch" style={{ color: "#fff", fontSize: 40 }} />
-                            </TouchableOpacity>
-                            
+                        ?
+                        <View style={{ alignItems: "center", justifyContent: "center", top: 100 }}>
+                            <Text>Hello</Text>
+                            <Button title="camera" onPress={() => this.setState({ isActive: false })}></Button>
                         </View>
-                    </Camera>
+
+                        // <HomeScreen />
+
+                        :
+                        <Camera style={{ flex: 1 }} type={this.state.cameraType} ref={ref => { this.camera = ref }}>
+                            <ActivityIndicator size="large" style={styles.loadingIndicator} color="#fff" animating={this.state.loading} />
+                            <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between", margin: 20 }}>
+
+                                <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
+                                    onPress={()=> this.setState({isActive: true})}
+                                >
+                                    <Ionicons name="ios-photos" style={{ color: "#fff", fontSize: 40 }} />
+                                </TouchableOpacity>
+
+                                <TouchableOpacity
+                                    style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent', }}
+                                    onPress={() => this.takePicture()}
+                                >
+                                    <FontAwesome name="camera" style={{ color: "#fff", fontSize: 40 }} />
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
+                                    onPress={() => this.handleCameraType()}
+                                >
+                                    <MaterialCommunityIcons name="camera-switch" style={{ color: "#fff", fontSize: 40 }} />
+                                </TouchableOpacity>
+
+                            </View>
+                        </Camera>
+                    }
                 </View>
             );
         }

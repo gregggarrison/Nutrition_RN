@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
 
-export default function SummaryHeader() {
+export default function SummaryHeader({ totalCal, totalCarbs, totalFat, totalProtein, date, newDate }) {
+
+
+    const handlePress = () => {
+        // minusDate()
+        console.log('date',date)
+        let result = new Date(date);
+        console.log('result', result)
+        result.setDate(result.getDate() - 1);
+        console.log(result)
+       
+
+        newDate(result)
+    }
+    const remainingCal = 2370 - totalCal
+
     return (
         <>
             <View style={styles.dateRow}>
                 <View style={styles.dateRowSides}>
-                    <AntDesign name="arrowleft" size={30} color="black" />
+                    <AntDesign name="arrowleft" size={30} color="black" onPress={handlePress} />
                 </View>
                 <View style={styles.dateRowCenter}>
-                    <Text style={{ fontSize: 25, color: "#ff8584", fontWeight: "bold" }}>Today</Text>
+                    <Text style={{ fontSize: 25, color: "#ff8584", fontWeight: "bold" }}>{date}</Text>
                 </View>
                 <View style={styles.dateRowSides}>
                     <AntDesign name="arrowright" size={30} color="black" />
@@ -19,22 +34,22 @@ export default function SummaryHeader() {
             </View>
             <View style={styles.summaryRow}>
                 <View style={styles.summaryHalf}>
-                    <Text style={styles.textSummaryLeftTop}>545 cal intake</Text>
+                    <Text style={styles.textSummaryLeftTop}>{totalCal} cal intake</Text>
                 </View>
                 <View style={styles.summaryHalf}>
-                    <Text style={styles.textSummaryRightTop}>remaining cal: 1445</Text>
+                    <Text style={styles.textSummaryRightTop}>remaining cal: {remainingCal}</Text>
                 </View>
             </View>
             <View style={styles.summaryRow}>
                 <View style={styles.summaryThird}>
-                    <Text style={styles.textSummaryLeft}>4g Protein</Text>
+                    <Text style={styles.textSummaryLeft}>{Math.floor(totalProtein)}g Protein</Text>
                 </View>
                 <View style={styles.summaryThird}>
-                    <Text style={styles.textSummaryCenter}>5g Carbs</Text>
+                    <Text style={styles.textSummaryCenter}>{Math.floor(totalCarbs)}g Carbs</Text>
 
                 </View>
                 <View style={styles.summaryThird}>
-                    <Text style={styles.textSummaryRight}>6g Fat</Text>
+                    <Text style={styles.textSummaryRight}>{Math.floor(totalFat)}g Fat</Text>
                 </View>
             </View>
             <View style={styles.headerRow}>
@@ -42,7 +57,7 @@ export default function SummaryHeader() {
                     <Text style={styles.textHeaderLeft}>Meals</Text>
                 </View>
                 <View style={styles.summaryHalf}>
-                    <Text style={styles.textHeaderRight}>45g</Text>
+                    <Text style={styles.textHeaderRight}>{totalCal}g</Text>
                 </View>
             </View>
         </>

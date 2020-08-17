@@ -1,7 +1,12 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 
-export default function SavedNutritionLabel({ meal, clearClick }) {
+export default function SavedNutritionLabel({ meal, clearClick, deleteMeal }) {
+
+
+    const removeMeal = () => {
+        deleteMeal(meal)
+    }
 
     return (
         <View style={styles.container}>
@@ -67,7 +72,7 @@ export default function SavedNutritionLabel({ meal, clearClick }) {
                     </View>
                 </View>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 3 }}>
-                    {/* <Button onPress={handlePress} title="Add"></Button> */}
+                    <Button onPress={removeMeal} title="Delete"></Button>
                     <Button onPress={() => clearClick()} title="Go Back"></Button>
                 </View>
             </View>

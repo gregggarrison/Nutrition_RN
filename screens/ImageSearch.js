@@ -13,8 +13,9 @@ export default function ImageSearch({ toggleOn, toggleOff, addToMeals, navigatio
     const [meal, setMeal] = useState({})
 
     const handlePress = () => {
-        // toggleOn()
-        // setQuery("")
+        console.log(query)
+        toggleOn()
+        setQuery("")
         const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${query}&detailed=true`
         fetch(searchURL, {
             method: "GET",
@@ -24,7 +25,7 @@ export default function ImageSearch({ toggleOn, toggleOff, addToMeals, navigatio
             }
         }).then(response => response.json())
             .then(meal => setMeal(meal.common[0]))
-        // .then(console.log(meal))
+        .then(console.log(meal))
     }
 
     const clearState = () => {

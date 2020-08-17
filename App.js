@@ -8,7 +8,7 @@ import {StyleSheet} from 'react-native'
 import HomeScreen from './screens/HomeScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import Macro from './screens/Macro'
-import FoodLog from './screens/FoodLog'
+import FoodLog from './components/FoodLog'
 import Nav from './components/Nav'
 import ImageSearch from './screens/ImageSearch'
 

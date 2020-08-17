@@ -24,7 +24,7 @@ function App({ navigation }) {
       <Nav navigation={navigation} />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" options={{headerStyle: {backgroundColor:"#F5B17B"  }}}>
+          <Stack.Screen name="Home" options={{headerShown: false  }}>
             {(props)=> <HomeScreen {...props} />}
 
           </Stack.Screen>

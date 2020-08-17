@@ -115,7 +115,7 @@ export default function HomeScreen({ navigation, route }) {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} >
             <FoodLog
                 toggleSearch={toggleSearch}
                 addToMeals={addToMeals}

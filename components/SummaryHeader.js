@@ -26,7 +26,7 @@ export default function SummaryHeader({ totalCal, totalCarbs, totalFat, totalPro
                     <AntDesign name="arrowleft" size={30} color="black" onPress={handlePress} />
                 </View>
                 <View style={styles.dateRowCenter}>
-                    <Text style={{ fontSize: 25, color: "#ff8584", fontWeight: "bold" }}>{date}</Text>
+                    <Text style={{ fontSize: 25, color: "#4E709D", fontWeight: "bold" }}>{date}</Text>
                 </View>
                 <View style={styles.dateRowSides}>
                     <AntDesign name="arrowright" size={30} color="black" />

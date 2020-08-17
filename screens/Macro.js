@@ -47,7 +47,7 @@ export default function Macro({ navigation }) {
                 <View style={styles.rightSide}>
                     <TextInput onChangeText={(text) => setCarbP(text / 100)} style={styles.textInput}>{(Math.floor(carbP * 100))}</TextInput>
                     <Text style={styles.rightText}>%</Text>
-                    <Text style={styles.rightTextRight}>{carbP * kcal}g</Text>
+                    <Text style={styles.rightTextRight}>{Math.floor(carbP * kcal)}g</Text>
                 </View>
             </View>
 
@@ -66,9 +66,9 @@ export default function Macro({ navigation }) {
                 </View>
 
                 <View style={styles.rightSide}>
-                    <TextInput onChangeText={(text) => setProtP(text / 100)} style={styles.textInput}>{(Math.floor(protP * 100))}</TextInput>
+                    <TextInput onChangeText={(text) => setProtP(text / 100)} style={styles.textInput}>{(Math.floor(protP * 100).toFixed(0))}</TextInput>
                     <Text style={styles.rightText}>%</Text>
-                    <Text style={styles.rightTextRight}>{protP * kcal}g</Text>
+                    <Text style={styles.rightTextRight}>{Math.floor(protP * kcal)}g</Text>
                 </View>
             </View>
 
@@ -89,7 +89,7 @@ export default function Macro({ navigation }) {
                 <View style={styles.rightSide}>
                     <TextInput onChangeText={(text) => setFatP(text / 100)} style={styles.textInput}>{fatP * 100}</TextInput>
                     <Text style={styles.rightText}>%</Text>
-                    <Text style={styles.rightTextRight}>{fatP * kcal}g</Text>
+                    <Text style={styles.rightTextRight}>{Math.floor(fatP * kcal)}g</Text>
                 </View>
             </View>
 

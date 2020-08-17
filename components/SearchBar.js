@@ -13,9 +13,12 @@ export default function SearchBar({ handlePress, query, setQuery }) {
             </TextInput>
 
             <Button
-                style={styles.button}
+                buttonStyle={styles.button}
                 title="search"
-                onPress={handlePress}>
+                onPress={handlePress}
+                titleStyle={{paddingLeft: 4}}
+                
+                >
             </Button>
         </View>
     )
@@ -32,7 +35,9 @@ const styles = StyleSheet.create({
         fontSize: 25,
         marginBottom: 15,
         marginTop: 15,
-        textAlign: 'center'
+        textAlign: 'center',
+        borderRadius: 20,
+        borderWidth: 2,
     },
 
     searchContainer: {
@@ -40,14 +45,16 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         borderBottomWidth: 1,
-        backgroundColor: "#4E709D",
+        backgroundColor: "#F5B17B",
         justifyContent: "center",
+        paddingTop: 40,
     },
 
     button: {
         backgroundColor: "#ff8584",
         color: "#ff8584",
         borderWidth: 1,
+    
     },
 
     textInput: {

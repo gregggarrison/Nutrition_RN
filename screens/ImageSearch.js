@@ -34,7 +34,7 @@ export default function ImageSearch({ toggleOn, toggleOff, addToMeals, navigatio
     }
 
     return (
-        <Cam setQuery={setQuery} handlePress={handlePress} />
+        <Cam setQuery={setQuery} handlePress={handlePress} navigation={navigation}/>
     )
 }
 

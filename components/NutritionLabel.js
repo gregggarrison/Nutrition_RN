@@ -14,11 +14,16 @@ export default function NutritionLabel({ meal, clearState, addToMeals, date }) {
         setFoodName(meal.food_name)
         setServeQty(meal.serving_qty)
         setServeUnit(meal.serving_unit)
-        setImg(meal.photo.thumb)
+        if(meal.photo.thumb){
+
+            setImg(meal.photo.thumb)
+            console.log(img)
+
+        }
     }, [])
 
     function handlePress(meal) {
-        setFoodName(meal.food_name)
+
 
         if (meal) {
             const mealData = {
@@ -176,7 +181,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         borderWidth: 1,
         top: "10%",
-        height: 400,
+        height: 350,
         width: "90%",
         backgroundColor: "white",
     },

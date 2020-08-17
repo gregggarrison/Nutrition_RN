@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-evenly",
         position: "absolute",
-        bottom: -80,
+        bottom: -100,
     },
 
     navButton: {

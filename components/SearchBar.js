@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, TextInput, Button, StyleSheet } from 'react-native'
 
-export default function SearchBar({ handlePress, query, setQuery, toggleImageSearch }) {
+export default function SearchBar({ handlePress, query, setQuery }) {
 
     return (
         <View style={styles.searchContainer}>
@@ -16,11 +16,6 @@ export default function SearchBar({ handlePress, query, setQuery, toggleImageSea
                 style={styles.button}
                 title="search"
                 onPress={handlePress}>
-            </Button>
-            <Button
-                style={styles.button}
-                title="camera"
-                onPress={toggleImageSearch}>
             </Button>
         </View>
     )

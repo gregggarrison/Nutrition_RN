@@ -20,7 +20,7 @@ export default function SummaryHeader({ totalCal, totalCarbs, totalFat, totalPro
     const remainingCal = 2370 - totalCal
 
     return (
-        <>
+        <View sytle={styles.container}>
             <View style={styles.dateRow}>
                 <View style={styles.dateRowSides}>
                     <AntDesign name="arrowleft" size={30} color="black" onPress={handlePress} />
@@ -60,7 +60,7 @@ export default function SummaryHeader({ totalCal, totalCarbs, totalFat, totalPro
                     <Text style={styles.textHeaderRight}>{totalCal}g</Text>
                 </View>
             </View>
-        </>
+        </View>
     )
 }
 
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#4E709D",
+        position: "absolute"
     },
 
     textHeaderLeft: {

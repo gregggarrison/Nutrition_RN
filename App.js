@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {StyleSheet} from 'react-native'
+import {StyleSheet, useState} from 'react-native'
 
 
 import HomeScreen from './screens/HomeScreen'
@@ -16,12 +16,18 @@ import ImageSearch from './screens/ImageSearch'
 const Stack = createStackNavigator();
 
 function App({ navigation }) {
+
+
+
   return (
     <>
       <Nav navigation={navigation} />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} options={{headerStyle: {backgroundColor:"#F5B17B"  }}} />
+          <Stack.Screen name="Home" options={{headerStyle: {backgroundColor:"#F5B17B"  }}}>
+            {(props)=> <HomeScreen {...props} />}
+
+          </Stack.Screen>
           <Stack.Screen name="Profile" component={ProfileScreen}  options={{headerStyle: {backgroundColor:"#F5B17B"  }}} />
           <Stack.Screen name="Macro" component={Macro}  options={{headerStyle: {backgroundColor:"#F5B17B"  }}} />
           <Stack.Screen name="Image Search" component={ImageSearch}  options={{headerStyle: {backgroundColor:"#F5B17B"  }}}/>               

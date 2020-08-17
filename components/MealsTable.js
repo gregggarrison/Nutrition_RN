@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 
 export default function MealsTable({ meal, toggleClick }) {
 
@@ -11,27 +11,28 @@ export default function MealsTable({ meal, toggleClick }) {
     }
 
     return (
-        <>
-            <View style={styles.itemRow} key={meal.id}>
-                <TouchableOpacity onPress={handlePress}>
-                    <View style={styles.imgContainer}>
-                        <Image source={{ uri: meal.img }} style={styles.img}></Image>
+
+            <>
+                <View style={styles.itemRow} key={meal.id}>
+                    <TouchableOpacity onPress={handlePress}>
+                        <View style={styles.imgContainer}>
+                            <Image source={{ uri: meal.img }} style={styles.img}></Image>
+                        </View>
+                    </TouchableOpacity>
+                    <View style={styles.nameContainer}>
+                        <Text style={styles.textSummaryCenter}>{meal.foodName}</Text>
                     </View>
-                </TouchableOpacity>
-                <View style={styles.nameContainer}>
-                    <Text style={styles.textSummaryCenter}>{meal.foodName}</Text>
+                    <View style={styles.qtyContainer}>
+                        <Text style={styles.textSummaryCenter}>{meal.serveQty}</Text>
+                    </View>
+                    <View style={styles.unitContainer}>
+                        <Text onPress={handlePress} style={styles.textSummaryCenter}>{meal.serveUnit}</Text>
+                    </View>
+                    <View style={styles.qtyContainer}>
+                        <Text style={styles.textSummaryCenter}>{meal.calories}g</Text>
+                    </View>
                 </View>
-                <View style={styles.qtyContainer}>
-                    <Text style={styles.textSummaryCenter}>{meal.serveQty}</Text>
-                </View>
-                <View style={styles.unitContainer}>
-                    <Text onPress={handlePress} style={styles.textSummaryCenter}>{meal.serveUnit}</Text>
-                </View>
-                <View style={styles.qtyContainer}>
-                    <Text style={styles.textSummaryCenter}>{meal.calories}g</Text>
-                </View>
-            </View>
-        </>
+            </>
     )
 }
 

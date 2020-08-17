@@ -6,6 +6,8 @@ import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icon
 import { IMG_API_KEY } from 'react-native-dotenv'
 import SumamryHeader from './SummaryHeader'
 import HomeScreen from '../screens/HomeScreen'
+import { APP_API_ID, API_KEY } from 'react-native-dotenv'
+
 
 
 export default class Cam extends Component {
@@ -70,10 +72,22 @@ export default class Cam extends Component {
             loading: false,
             isActive: true,
         });
+        
+        const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${this.state.query}&detailed=true`
+        fetch(searchURL, {
+            method: "GET",
+            headers: {
+                "x-app-id": APP_API_ID,
+                "x-app-key": API_KEY
+            }
+        }).then(response => response.json())
+            .then(meal => this.props.navigation.navigate("Home", {searchMeal: meal.common[0]}))
+
         // Show an alert with the answer on
         Alert.alert(
             this.state.query,
             '',
+            
             { cancelable: false }
         )
         // Resume the preview
@@ -99,6 +113,7 @@ export default class Cam extends Component {
                         <View style={{ alignItems: "center", justifyContent: "center", top: 100 }}>
                             <Text>Hello</Text>
                             <Button title="camera" onPress={() => this.setState({ isActive: false })}></Button>
+                            <Button title="test" onPress={()=> console.log(this.state.query)}></Button>
                         </View>
 
                         // <HomeScreen />

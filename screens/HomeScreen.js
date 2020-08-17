@@ -8,6 +8,7 @@ import FoodLog from '../components/FoodLog'
 import SavedNutritionLabel from '../components/SavedNutritionLabel'
 import NutritionLabel from '../components/NutritionLabel'
 import SearchResults from '../components/SearchResults'
+import SavedSearchResults from '../components/SavedSearchResults'
 
 const mealsURL = "http://10.0.0.178:3000/meals/"
 
@@ -103,6 +104,7 @@ export default function HomeScreen({ navigation, route }) {
                         meal={meal}
                         toggleClick={toggleClick}
                         clearClick={clearClick}
+                        style={styles.scrollView}
                     />
                 </ScrollView>
             )
@@ -131,7 +133,8 @@ export default function HomeScreen({ navigation, route }) {
                         clearState={clearState}
                     />
                 </>
-                : null
+                :
+                null
             }
 
             {search
@@ -146,12 +149,20 @@ export default function HomeScreen({ navigation, route }) {
                         date={date}
                         newDate={newDate}
                     />
-                    <ScrollView>
-                        {meal
-                            ? <SavedNutritionLabel clearClick={clearClick} meal={meal} deleteMeal={deleteMeal} />
-                            : showMeals()
-                        }
-                    </ScrollView>
+                    {meal
+                        ?
+                        <>
+                            <SavedSearchResults meal={meal} />
+                            <SavedNutritionLabel clearClick={clearClick} meal={meal} deleteMeal={deleteMeal} />
+                        </>
+                        :
+
+                        <View style={{ height: 200 }}>
+                            <ScrollView style={styles.scrollView}>
+                                {showMeals()}
+                            </ScrollView>
+                        </View>
+                    }
                 </>
             }
 
@@ -165,4 +176,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "white",
     },
+
+    scrollView: {
+        height: 250
+    }
 })

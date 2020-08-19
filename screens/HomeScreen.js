@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, ScrollView } from 'react-native'
-import Nav from '../components/Nav'
+import moment from 'moment'
 
+import Nav from '../components/Nav'
 import SummaryHeader from '../components/SummaryHeader'
 import MealsTable from '../components/MealsTable'
 import FoodLog from '../components/FoodLog'
@@ -19,11 +20,29 @@ export default function HomeScreen({ navigation, route }) {
     const [searchMeal, setSearchMeal] = useState(null)
     const [imageSearch, setImageSearch] = useState(false)
     const [meal, setMeal] = useState(null)
-    const [date, newDate] = useState("")
+    const [date, setDate] = useState(null)
 
     const toggleClick = (meal) => setMeal(meal)
     const clearClick = () => setMeal(null)
     const toggleSearch = () => setSearch(!search)
+
+
+    const getDate = () => {
+        let selectedDate = moment().format('MM/DD/YYYY')
+        setDate(selectedDate)
+    }
+    const handleMinus = () => {
+        let selectedDate = moment(date).subtract(1, 'days').calendar("MM/DD/YYYY")
+        setDate(selectedDate)
+        console.log(date)
+      }
+    
+      const handlePlus = () => {
+        let selectedDate = moment(date).add(1, 'days').calendar("MM/DD/YYYY")
+        setDate(selectedDate)
+        console.log(date)
+      }
+
 
     const addToMeals = (mealData) => {
         setMeals([...meals, mealData])
@@ -37,14 +56,7 @@ export default function HomeScreen({ navigation, route }) {
         })
     }
 
-    const minusDate = (date) => {
-        let result = new Date(date);
-        result.setDate(result.getDate() - 1);
-        console.log(result)
-        return result;
 
-        setDate(result)
-    }
 
     const deleteMeal = (exMeal) => {
         let newMeals = meals.filter(exMeal => meal.id !== exMeal.id)
@@ -65,7 +77,7 @@ export default function HomeScreen({ navigation, route }) {
 
     useEffect(() => {
         getMeals()
-        newDate(new Date().toDateString())
+        getDate()
     }, [])
 
     useEffect(() => {
@@ -101,6 +113,7 @@ export default function HomeScreen({ navigation, route }) {
             return (
                 <ScrollView key={meal.id}>
                     <MealsTable
+                        key={meal.id}
                         meal={meal}
                         toggleClick={toggleClick}
                         clearClick={clearClick}
@@ -147,7 +160,8 @@ export default function HomeScreen({ navigation, route }) {
                         totalFat={totalFat}
                         totalProtein={totalProtein}
                         date={date}
-                        newDate={newDate}
+                        handleMinus={handleMinus}
+                        handlePlus={handlePlus}
                     />
                     {meal
                         ?

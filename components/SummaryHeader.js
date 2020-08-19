@@ -3,33 +3,22 @@ import { View, Text, StyleSheet } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
 
-export default function SummaryHeader({ totalCal, totalCarbs, totalFat, totalProtein, date, newDate }) {
+export default function SummaryHeader({ totalCal, totalCarbs, totalFat, totalProtein, date, handleMinus, handlePlus }) {
 
 
-    const handlePress = () => {
-        // minusDate()
-        console.log('date',date)
-        let result = new Date(date);
-        console.log('result', result)
-        result.setDate(result.getDate() - 1);
-        console.log(result)
-       
-
-        newDate(result)
-    }
     const remainingCal = 2370 - totalCal
 
     return (
         <View sytle={styles.container}>
             <View style={styles.dateRow}>
                 <View style={styles.dateRowSides}>
-                    <AntDesign name="arrowleft" size={30} color="black" onPress={handlePress} />
+                    <AntDesign name="arrowleft" size={30} color="black" onPress={handleMinus} />
                 </View>
                 <View style={styles.dateRowCenter}>
                     <Text style={{ fontSize: 25, color: "#4E709D", fontWeight: "bold" }}>{date}</Text>
                 </View>
                 <View style={styles.dateRowSides}>
-                    <AntDesign name="arrowright" size={30} color="black" />
+                    <AntDesign name="arrowright" size={30} color="black" onPress={handlePlus} />
                 </View>
             </View>
             <View style={styles.summaryRow}>

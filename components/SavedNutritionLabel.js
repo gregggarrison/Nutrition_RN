@@ -21,21 +21,13 @@ export default function SavedNutritionLabel({ meal, clearClick, deleteMeal }) {
     let lCholestDV = 300
     let lFiberDV = 25
 
-    // const fiberDV = percentDV(meal.fiber, lFiberDV)
-
-    // const sodiumDV = percentDV(meal.sodium, sodDV)
-    // const totalFatDV = percentDV(meal.totalFat, tFatDV)
     const totalFatDV = Math.floor((meal.allFat / tFatDV) * 100)
     const sFatDV = Math.floor((meal.satFat / lSatFatDV) * 100)
     const cholestDV = Math.floor((meal.cholesterol / lCholestDV) * 100)
     const fiberDV = Math.floor((meal.fiber / lFiberDV) * 100)
     const sodiumDV = Math.floor((meal.sodium / sodDV) * 100)
-
-
-    // const sFatDV =(Math.floor (meal.satFat / lSatFatDV) * 100)
     const carbsDV = Math.floor((meal.carbohydrates / lCarbsDV) * 100)
 
-    // console.log(meal.totalFat)
 
     return (
         <View style={styles.container}>
@@ -116,7 +108,7 @@ const styles = StyleSheet.create({
     labelContainer: {
         flexDirection: "column",
         borderWidth: 1,
-        top: "10%",
+        top: "3%",
         height: 350,
         width: "90%",
         backgroundColor: "white",
@@ -128,7 +120,7 @@ const styles = StyleSheet.create({
         backgroundColor: "black",
         flexDirection: "row",
         alignSelf: "center",
-        marginTop: 5,
+        marginTop: 10,
         marginBottom: 5,
     },
 

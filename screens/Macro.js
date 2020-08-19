@@ -12,7 +12,6 @@ export default function Macro({ navigation }) {
     const [fatP, setFatP] = useState(.30)
 
     const handlePress = () => {
-        console.log('clicked')
         alert('values saved')
     }
 

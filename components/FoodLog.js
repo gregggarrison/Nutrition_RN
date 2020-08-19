@@ -33,7 +33,6 @@ export default function FoodLog({ toggleSearch, addToMeals, date }) {
     const toggleImageSearch = () => setImageSearch(!imageSearch)
 
     const handleClick = () => {
-        console.log(query)
         toggleSearch()
         setQuery("")
         const searchURL = `https://trackapi.nutritionix.com/v2/search/instant?query=${query}&detailed=true`

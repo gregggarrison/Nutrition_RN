@@ -17,8 +17,6 @@ export default function NutritionLabel({ meal, clearState, addToMeals, date }) {
         if(meal.photo.thumb){
 
             setImg(meal.photo.thumb)
-            console.log(img)
-
         }
     }, [])
 

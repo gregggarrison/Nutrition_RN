@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet, ActivityIndicator, Dimensions, Alert, Button } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, ActivityIndicator, Dimensions } from 'react-native'
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { IMG_API_KEY } from 'react-native-dotenv'
 import { APP_API_ID, API_KEY } from 'react-native-dotenv'
 
-
-
 export default class Cam extends Component {
-
     state = {
         hasPermission: null,
         type: Camera.Constants.Type.back,
@@ -40,10 +37,7 @@ export default class Cam extends Component {
                 loading: true
             }))
 
-            const options = {
-                base64: true
-            }
-
+            const options = { base64: true }
             let data = await this.camera.takePictureAsync(options);
 
             this.identifyImage(data.base64)
@@ -51,12 +45,10 @@ export default class Cam extends Component {
     }
 
     identifyImage(imageData) {
-
         const Clarifai = require('clarifai');
         const app = new Clarifai.App({
             apiKey: IMG_API_KEY
         });
-
         app.models.predict("bd367be194cf45149e75f01d59f77ba7", { base64: imageData })
             .then((response) => this.displayAnswer(response.outputs[0].data.concepts[0].name)
                 .catch((err) => alert(err))
@@ -101,41 +93,33 @@ export default class Cam extends Component {
         } else {
 
             return (
-
                 <View style={{ flex: 1 }}>
-
                     <Camera style={{ flex: 1 }} type={this.state.cameraType} ref={ref => { this.camera = ref }}>
                         <ActivityIndicator size="large" style={styles.loadingIndicator} color="#fff" animating={this.state.loading} />
                         <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between", margin: 20 }}>
-
                             <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
                                 onPress={() => this.setState({ isActive: true })}
                             >
                                 <Ionicons name="ios-photos" style={{ color: "#fff", fontSize: 40 }} />
                             </TouchableOpacity>
-
                             <TouchableOpacity
                                 style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent', }}
                                 onPress={() => this.takePicture()}
                             >
                                 <FontAwesome name="camera" style={{ color: "#fff", fontSize: 40 }} />
                             </TouchableOpacity>
-
                             <TouchableOpacity style={{ alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent' }}
                                 onPress={() => this.handleCameraType()}
                             >
                                 <MaterialCommunityIcons name="camera-switch" style={{ color: "#fff", fontSize: 40 }} />
                             </TouchableOpacity>
-
                         </View>
                     </Camera>
-
                 </View>
             );
         }
     }
 }
-
 
 const styles = StyleSheet.create({
     preview: {

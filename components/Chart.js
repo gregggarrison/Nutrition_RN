@@ -8,9 +8,9 @@ export default function Chart({ totalCarbs, totalProtein, totalCal, totalFat }) 
         labels: ["carbs", "protein", "fat"],
         legend: ["actual", "goal", "over"],
         data: [
-            [Math.floor(totalCarbs) * 4, 703, 2346],
-            [Math.floor(totalProtein) * 4, 938, 2346],
-            [Math.floor(totalFat) * 9, 703, 2346],
+            [Math.floor(totalCarbs) * 4, 703, 1643],
+            [Math.floor(totalProtein) * 4, 938, 1408],
+            [Math.floor(totalFat) * 9, 703, 1643],
         ],
         barColors: ["blue", "#ced6e0","red"]
     }

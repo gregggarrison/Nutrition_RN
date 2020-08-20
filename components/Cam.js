@@ -38,6 +38,7 @@ export default class Cam extends Component {
             }))
 
             const options = { base64: true }
+            
             let data = await this.camera.takePictureAsync(options);
 
             this.identifyImage(data.base64)

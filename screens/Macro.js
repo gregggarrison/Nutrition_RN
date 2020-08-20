@@ -43,7 +43,7 @@ export default function Macro({ navigation }) {
     return (
 
         <View style={styles.container}>
-            <View style={{height: 20}}></View>
+            <View style={{height: 10}}></View>
             <View style={{ alignItems: "center", justifyContent: "center", height: 35, borderWidth: 1, backgroundColor: "#4E709D", }}>
                 <Text style={styles.textHeader}>Recomended Calories:</Text>
             </View>
@@ -78,7 +78,7 @@ export default function Macro({ navigation }) {
                     </Text>
                 </View>
             </View>
-            <View style={{height: 20}}></View>
+            <View style={{height: 10}}></View>
 
             <View style={{ alignItems: "center", justifyContent: "center", height: 35, borderWidth: 1, backgroundColor: "#4E709D", }}>
                 <Text style={styles.textHeader}>Source of Calories:</Text>
@@ -140,7 +140,7 @@ export default function Macro({ navigation }) {
                     <Text style={styles.rightTextRight}>{Math.floor(fatP * kcal)}g</Text>
                 </View>
             </View>
-            <View style={{height: 20}}></View>
+            <View style={{height: 10}}></View>
 
             <View style={{ alignItems: "center", justifyContent: "center", height: 35, borderWidth: 1, backgroundColor: "#4E709D", }}>
                 <Text style={styles.textHeader}>Goal:</Text>
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         borderRadius: 14,
         borderWidth: 2,
         borderColor: "#4E709D",
-        bottom: 120,
+        bottom: 105,
         position: "absolute",
     },
 

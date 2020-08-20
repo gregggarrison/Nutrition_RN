@@ -49,6 +49,8 @@ npm start
 ```
 
 You will also need to get API keys for the following:
+
+
 [Nutritionix](https://developer.nutritionix.com/signup) - Nutritional value lookup.
 
 [Clarifia](https://docs.clarifai.com/getting-started/authentication/app-specific-api-keys) - Computer Vision / AI
@@ -83,9 +85,11 @@ During these covid / quarantine times I'm sure I'm not the only one who's put on
 This is my first attempt a react-native app which was been fun and challenging. I am open to any and all feedback so fell free to reach out with suggestions/thoughts.
 
 ## Contact
-Gregg Garrison
-g.garrison@me.com
-github.com/gregggarrison
+
+
+Gregg Garrison | g.garrison@me.com | github.com/gregggarrison
+
+
 
 
 

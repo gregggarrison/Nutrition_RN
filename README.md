@@ -92,7 +92,7 @@ Again both are free and can be setup within a few minutes.
 
 During these covid / quarantine times I'm sure I'm not the only one who's put on a few extra pounds... so instead of getting in shape/eating better I chose to sit on my ever expanding behind and make an app that I would want to use if (hopefully WHEN) I decide to get the ball rolling.  
 
-This is my first attempt a react-native app which was been fun and challenging. I am open to any and all feedback so fell free to reach out with suggestions/thoughts.
+This is my first attempt at react-native which was been fun and challenging. I am open to any and all feedback so fell free to reach out with suggestions/thoughts.
 
 ## Contact
 

@@ -4,7 +4,7 @@ import Cam from '../components/Cam'
 export default function ImageSearch({ navigation }) {
 
     return (
-        <Cam setQuery={setQuery} handlePress={handlePress} navigation={navigation} />
+        <Cam navigation={navigation} />
     )
 }
 

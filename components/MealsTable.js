@@ -40,8 +40,9 @@ const styles = StyleSheet.create({
 
     textSummaryCenter: {
         color: "#ff8584",
-        fontSize: 14,
+        fontSize: 15,
         textAlign: "center",
+        // fontWeight: "bold"
     },
 
     itemRow: {

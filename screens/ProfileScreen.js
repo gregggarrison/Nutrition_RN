@@ -101,7 +101,7 @@ export default function ProfileScreen({ navigation }) {
             <View style={styles.main}>
                 <View style={{ justifyContent: "center", alignItems: "center" }}>
                     <Image
-                        style={{ width: 400, height: 300, marginTop: 18, marginBottom: 7 }}
+                        style={{ width: "100%", height: 300, marginTop: 18, marginBottom: 7 }}
                         source={{ uri: "https://ca.slack-edge.com/T02MD9XTF-U0104PU0YH1-1165c623265e-512" }}>
                     </Image>
                 </View>

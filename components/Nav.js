@@ -39,7 +39,7 @@ export default function Nav({ navigation }) {
                         style={{ marginBottom: 7 }}
                         name="camera" size={70}
                         color="black"
-                        nPress={() => navigation.navigate('Image Search')}
+                        onPress={() => navigation.navigate('Image Search')}
                     />
                 </View>
             </View>

@@ -88,7 +88,7 @@ export default class Cam extends Component {
         //     { cancelable: false }
         // )
         // Resume the preview
-        this.camera.resumePreview();
+        // this.camera.resumePreview();
     }
 
     render() {

@@ -13,7 +13,6 @@ export default function Macro({ navigation }) {
     const [BMR, setBMR] = useState(2070)
     const [activityLevel, setActivityLevel] = useState('slightly active')
 
-
     const handlePress = () => {
         alert('values saved')
     }
@@ -44,12 +43,10 @@ export default function Macro({ navigation }) {
     return (
 
         <View style={styles.container}>
-
-            <View style={styles.header}>
+            <View style={{height: 10}}></View>
+            <View style={{ alignItems: "center", justifyContent: "center", height: 35, borderWidth: 1, backgroundColor: "#4E709D", }}>
                 <Text style={styles.textHeader}>Recomended Calories:</Text>
             </View>
-
-
             <View style={styles.row}>
                 <View style={styles.leftSide}>
                     <Text style={styles.leftText}>Maintain:</Text>
@@ -80,11 +77,9 @@ export default function Macro({ navigation }) {
                     </Text>
                 </View>
             </View>
-            <View style={{ height: 20, borderWidth: 1, backgroundColor: "#4E709D" }}>
-
+            <View style={{ alignItems: "center", justifyContent: "center", height: 35, borderWidth: 1, backgroundColor: "#4E709D", }}>
+                <Text style={styles.textHeader}>Source of Calories:</Text>
             </View>
-
-
             <View style={styles.rows}>
                 <View style={styles.leftSideRows}>
                     <View style={styles.leftTop}>
@@ -98,14 +93,12 @@ export default function Macro({ navigation }) {
                             </Text>
                     </View>
                 </View>
-
                 <View style={styles.rightSide}>
                     <TextInput onChangeText={(text) => setCarbP(text / 100)} style={styles.textInput}>{(Math.floor(carbP * 100))}</TextInput>
                     <Text style={styles.rightText}>%</Text>
                     <Text style={styles.rightTextRight}>{Math.floor(carbP * kcal)}g</Text>
                 </View>
             </View>
-
             <View style={styles.rows}>
                 <View style={styles.leftSideRows}>
                     <View style={styles.leftTop}>
@@ -119,14 +112,12 @@ export default function Macro({ navigation }) {
                             </Text>
                     </View>
                 </View>
-
                 <View style={styles.rightSide}>
                     <TextInput onChangeText={(text) => setProtP(text / 100)} style={styles.textInput}>{(Math.floor(protP * 100).toFixed(0))}</TextInput>
                     <Text style={styles.rightText}>%</Text>
                     <Text style={styles.rightTextRight}>{Math.floor(protP * kcal)}g</Text>
                 </View>
             </View>
-
             <View style={styles.rows}>
                 <View style={styles.leftSideRows}>
                     <View style={styles.leftTop}>
@@ -140,29 +131,27 @@ export default function Macro({ navigation }) {
                             </Text>
                     </View>
                 </View>
-
                 <View style={styles.rightSide}>
                     <TextInput onChangeText={(text) => setFatP(text / 100)} style={styles.textInput}>{fatP * 100}</TextInput>
                     <Text style={styles.rightText}>%</Text>
                     <Text style={styles.rightTextRight}>{Math.floor(fatP * kcal)}g</Text>
                 </View>
             </View>
-            <View style={{ height: 20, borderWidth: 1, backgroundColor: "#4E709D" }}></View>
-
+            <View style={{ alignItems: "center", justifyContent: "center", height: 35, borderWidth: 1, backgroundColor: "#4E709D", }}>
+                <Text style={styles.textHeader}>Goal:</Text>
+            </View>
             <View style={styles.row}>
                 <View style={styles.leftSide}>
-                    <Text style={styles.leftText}>Daily Calories Goal:</Text>
+                    <Text style={styles.leftText}>Daily Calories:</Text>
                 </View>
                 <View style={styles.rightSide}>
                     <TextInput onChangeText={(text) => setKcal(text)} style={styles.textInput}>{kcal}</TextInput>
                     <Text style={styles.rightText}>kcal</Text>
                 </View>
             </View>
-
             <View style={styles.saveRow}>
-                <Button fontStyle={{ color: "white" }} title="Save" onPress={() => { handlePress() }}></Button>
+                <Button title="Save" onPress={() => { handlePress() }}></Button>
             </View>
-
             <Nav navigation={navigation} />
         </View>
     )
@@ -172,9 +161,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        // backgroundColor: "#4E709D",
         backgroundColor: "#F6F6F6",
-
     },
 
     saveRow: {
@@ -182,16 +169,12 @@ const styles = StyleSheet.create({
         width: "50%",
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: 95,
-        // backgroundColor: "#F6F6F6",
+        marginLeft: "21%",
         backgroundColor: "#F5B17B",
         borderRadius: 14,
         borderWidth: 2,
-
         borderColor: "#4E709D",
-
-        // marginTop: 245,
-        bottom: 100,
+        bottom: 120,
         position: "absolute",
     },
 
@@ -201,7 +184,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderBottomWidth: 1,
         backgroundColor: "#F6F6F6",
-        top: 10,
         alignItems: "center",
     },
 
@@ -211,7 +193,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderBottomWidth: 1,
         backgroundColor: "#F6F6F6",
-        top: 10,
     },
 
     leftSide: {
@@ -255,22 +236,30 @@ const styles = StyleSheet.create({
     leftText: {
         fontSize: 20,
         textAlign: "right",
+        color: "#ff8584",
+        fontWeight: "bold",
     },
 
     leftSmallText: {
         fontSize: 14,
         marginRight: 8,
+        color: "#4E709D",
+        fontWeight: "bold"
     },
 
     rightText: {
         fontSize: 20,
         marginLeft: 4,
+        color: "#ff8584",
+        fontWeight: "bold",
     },
 
     rightTextRight: {
         fontSize: 15,
         marginLeft: 18,
         textAlign: "right",
+        color: "#4E709D",
+        fontWeight: "bold",
     },
 
     textInput: {
@@ -284,14 +273,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
 
-    // row: {
-    //     height: 40,
-    //     width: "100%",
-    //     flexDirection: "row",
-    //     borderBottomWidth: 1,
-    //     alignItems: "center"
-    // },
-
     header: {
         height: 50,
         width: "100%",
@@ -300,7 +281,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#4E709D",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 15,
         borderRadius: 2,
     },
 
@@ -336,15 +316,13 @@ const styles = StyleSheet.create({
         textAlign: "left",
         marginLeft: 15,
         fontFamily: "Verdana"
-
     },
 
     textHeader: {
         color: "#F6F6F6",
-        fontSize: 28,
+        fontSize: 22,
         textAlign: "center",
         fontWeight: "bold",
-        // fontFamily: "veranda"
     },
 
     rowButton: {
@@ -355,8 +333,6 @@ const styles = StyleSheet.create({
         color: "#ff8584",
         justifyContent: "space-evenly",
         backgroundColor: "#4E709D",
-
-
     },
 
 })

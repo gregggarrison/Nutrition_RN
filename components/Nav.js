@@ -1,31 +1,46 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { MaterialIcons, MaterialCommunityIcons, FontAwesome5, EvilIcons } from '@expo/vector-icons';
-
+import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 
 export default function Nav({ navigation }) {
     return (
         <View style={styles.rowButton}>
             <View style={styles.navButton}>
                 <View>
-                    <MaterialIcons name="home" size={84} color="black" onPress={() => navigation.navigate('Home')} />
+                    <MaterialIcons
+                        name="home" size={84}
+                        color="black"
+                        onPress={() => navigation.navigate('Home')}
+                    />
                 </View>
             </View>
             <View style={styles.navButton}>
                 <View>
-                    <MaterialCommunityIcons name="face-profile" size={84} color="black" onPress={() => navigation.navigate('Profile')} />
+                    <MaterialCommunityIcons
+                        name="face-profile"
+                        size={84} color="black"
+                        onPress={() => navigation.navigate('Profile')}
+                    />
                 </View>
             </View>
             <View style={styles.navButton}>
                 <View>
-                    <MaterialCommunityIcons name="nutrition" size={84} color="black" onPress={() => navigation.navigate('Macro')} />
+                    <MaterialCommunityIcons
+                        name="nutrition"
+                        size={84}
+                        color="black"
+                        onPress={() => navigation.navigate('Macro')}
+                    />
                 </View>
             </View>
             <View style={styles.navButton}>
                 <View>
-                {/* <EvilIcons name="camera" size={84} color="black" /> */}
-                <FontAwesome5 style={{marginBottom: 7}} name="camera" size={70} color="black" onPress={() => navigation.navigate('Image Search')}/>
-                    {/* <FontAwesome5 style={{ marginBottom: 4 }} name="nutritionix" size={84} color="black" onPress={() => navigation.navigate('Image Search')} /> */}
+                    <FontAwesome5
+                        style={{ marginBottom: 7 }}
+                        name="camera" size={70}
+                        color="black"
+                        nPress={() => navigation.navigate('Image Search')}
+                    />
                 </View>
             </View>
         </View>

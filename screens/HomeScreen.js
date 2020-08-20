@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, ScrollView, Text} from 'react-native'
+import { View, StyleSheet, ScrollView, Text } from 'react-native'
 import moment from 'moment'
-import PureChart from 'react-native-pure-chart';
+
 import Chart from '../components/Chart'
-
-
 import Nav from '../components/Nav'
 import SummaryHeader from '../components/SummaryHeader'
 import MealsTable from '../components/MealsTable'
@@ -28,7 +26,6 @@ export default function HomeScreen({ navigation, route }) {
     const toggleClick = (meal) => setMeal(meal)
     const clearClick = () => setMeal(null)
     const toggleSearch = () => setSearch(!search)
-
 
     const getDate = () => {
         let selectedDate = moment().format('MM/DD/YYYY')
@@ -146,14 +143,12 @@ export default function HomeScreen({ navigation, route }) {
         setImageSearch(false)
     }
 
-  
     return (
         <View style={styles.container} >
             <FoodLog
                 toggleSearch={toggleSearch}
                 addToMeals={addToMeals}
             />
-
             {imageSearch
                 ?
                 <>
@@ -167,7 +162,6 @@ export default function HomeScreen({ navigation, route }) {
                 :
                 null
             }
-
             {search
                 ? null
                 : <>
@@ -193,24 +187,21 @@ export default function HomeScreen({ navigation, route }) {
                                 <ScrollView style={styles.scrollView}>
                                     {showMeals()}
                                 </ScrollView>
-
                             </View>
                             <View style={styles.chart}>
-                                <Text style={{marginBottom: 15, justifyContent: "center", alignItems: "center", color: "#4e709D", fontWeight: "bold", fontSize: 20 }}>Source of Calories</Text>
-                               <Chart 
-                               totalCal={totalCal}
-                               totalFat={totalFat}
-                               totalCarbs={totalCarbs}
-                               totalProtein={totalProtein}
-                               
-                               />
+                                <Text style={{ marginBottom: 10, marginTop: 10, justifyContent: "center", alignItems: "center", color: "#4e709D", fontWeight: "bold", fontSize: 20 }}>Source of Calories</Text>
+                                <Chart
+                                    totalCal={totalCal}
+                                    totalFat={totalFat}
+                                    totalCarbs={totalCarbs}
+                                    totalProtein={totalProtein}
+                                />
                             </View>
 
                         </>
                     }
                 </>
             }
-
             <Nav navigation={navigation} />
         </View>
     )

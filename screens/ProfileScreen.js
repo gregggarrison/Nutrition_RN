@@ -99,10 +99,11 @@ export default function ProfileScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.main}>
-
                 <View style={{ justifyContent: "center", alignItems: "center" }}>
-                    <Image style={{ width: 300, height: 300, marginTop: 18, marginBottom: 7 }} source={{ uri: "https://ca.slack-edge.com/T02MD9XTF-U0104PU0YH1-1165c623265e-512" }}></Image>
-
+                    <Image
+                        style={{ width: 400, height: 300, marginTop: 18, marginBottom: 7 }}
+                        source={{ uri: "https://ca.slack-edge.com/T02MD9XTF-U0104PU0YH1-1165c623265e-512" }}>
+                    </Image>
                 </View>
                 <View style={styles.profileContainer}>
                     <View style={styles.rowView}>
@@ -173,7 +174,6 @@ export default function ProfileScreen({ navigation }) {
                             <TextInput style={styles.textInput} placeholder="activity level" value={activityLevel} />
                         </View>
                     </View>
-
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>BMR:</Text>
@@ -185,56 +185,7 @@ export default function ProfileScreen({ navigation }) {
                         </View>
                     </View>
                 </View>
-
-                {/* <View style={styles.calorieContainer}>
-                    <View style={styles.header}>
-                        <Text style={styles.textHeader}>Recomended Calories:</Text>
-                    </View>
-
-                    <View style={styles.rowView}>
-                        <View style={styles.labelContainer}>
-                            <Text style={styles.label}>BMR:</Text>
-                        </View>
-                        <View style={styles.inputContainer}>
-                            <Text style={styles.textInput} >
-                                {BMR}
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={styles.rowView}>
-                        <View style={styles.labelContainer}>
-                            <Text style={styles.label}>Maintain:</Text>
-                        </View>
-                        <View style={styles.inputContainer}>
-                            <Text style={styles.textInput}>
-                                {BMR === null ? null : getMaintain()}
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={styles.rowView}>
-                        <View style={styles.labelContainer}>
-                            <Text style={styles.label}>-1 lb/wk:</Text>
-                        </View>
-                        <View style={styles.inputContainer}>
-                            <Text style={styles.textInput}>
-                                {BMR === null ? null : getMaintain() - 500}
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={styles.rowView}>
-                        <View style={styles.labelContainer}>
-                            <Text style={styles.label}>+1 lb/wk:</Text>
-                        </View>
-                        <View style={styles.inputContainer}>
-                            <Text style={styles.textInput}>
-                                {BMR === null ? null : getMaintain() + 500}
-                            </Text>
-                        </View>
-                    </View>
-                </View> */}
-
                 <Nav navigation={navigation} />
-
             </View>
         </View>
     )
@@ -249,11 +200,7 @@ const styles = StyleSheet.create({
 
     main: {
         height: "100%",
-        // backgroundColor: "#DBE2EF",
         backgroundColor: "#4E709D",
-
-        // justifyContent: "space-evenly"
-
     },
 
     profileContainer: {

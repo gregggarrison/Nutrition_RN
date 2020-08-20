@@ -3,12 +3,10 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 
 export default function SavedNutritionLabel({ meal, clearClick, deleteMeal }) {
 
-
     const removeMeal = () => {
         deleteMeal(meal)
         console.log('click')
     }
-
 
     function percentDV(nutrient, nutrientDV) {
         const amount = nutrient ? nutrient.value : 0
@@ -29,12 +27,10 @@ export default function SavedNutritionLabel({ meal, clearClick, deleteMeal }) {
     const sodiumDV = Math.floor((meal.sodium / sodDV) * 100)
     const carbsDV = Math.floor((meal.carbohydrates / lCarbsDV) * 100)
 
-
     return (
         <View style={styles.container}>
             <View style={styles.labelContainer}>
                 <View style={styles.borderThick}></View>
-
                 <View style={styles.rowView}>
                     <Text style={{ textAlign: "left", fontWeight: "bold", left: 9 }}>Calories  {meal.calories}</Text>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>

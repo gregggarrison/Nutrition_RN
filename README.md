@@ -15,11 +15,9 @@ Get healthy by working smarter not harder!
 
 ## General Info
 
-Losing weight/getting healthy physically is tough enough on its own...and not knowing where to start is a huge deterrent from initiating the process.
-
 Losing weight/getting healthy is a daunting task not just on a physical level. Change is scary, intimidating and not knowing where to start is a huge deterrent from initiating the process. 
 
-Nutrition_RN (working title) helps eleviate some of the stress that comes with traveling unchartered territories.  The concept of losing weight is simple... INPUT < OUTPUT.  My app will establish your BMR (minimum number of calories required for basic functions at rest source: https://www.healthline.com/health/what-is-basal-metabolic-rate#bmr-vs-rmr).  
+Nutrition_RN (working title) helps alleviate some of the stress that comes with traveling unchartered territories.  The concept of losing weight is simple... INPUT < OUTPUT.  My app will establish your BMR (minimum number of calories required for basic functions at rest source: https://www.healthline.com/health/what-is-basal-metabolic-rate#bmr-vs-rmr).  
 
 ## Intro Video
 Coming soon....

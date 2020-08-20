@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, Text} from 'react-native'
 import moment from 'moment'
 import PureChart from 'react-native-pure-chart';
 import Chart from '../components/Chart'
@@ -146,22 +146,7 @@ export default function HomeScreen({ navigation, route }) {
         setImageSearch(false)
     }
 
-    let sampleData = [
-        {
-          value: 50,
-          label: 'Marketing',
-          color: 'red',
-        }, {
-          value: 40,
-          label: 'Sales',
-          color: 'blue'
-        }, {
-          value: 25,
-          label: 'Support',
-          color: 'green'
-        }
-    
-      ]
+  
     return (
         <View style={styles.container} >
             <FoodLog
@@ -211,7 +196,7 @@ export default function HomeScreen({ navigation, route }) {
 
                             </View>
                             <View style={styles.chart}>
-
+                                <Text style={{marginBottom: 15, justifyContent: "center", alignItems: "center", color: "#4e709D", fontWeight: "bold", fontSize: 20 }}>Source of Calories</Text>
                                <Chart 
                                totalCal={totalCal}
                                totalFat={totalFat}
@@ -242,7 +227,9 @@ const styles = StyleSheet.create({
     },
 
     chart: {
-        marginTop: 40,
+        marginTop: 0,
+        justifyContent: "center",
+        alignItems: "center"
 
     }
 })

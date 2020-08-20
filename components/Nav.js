@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons, MaterialCommunityIcons, FontAwesome5, EvilIcons } from '@expo/vector-icons';
 
 
 export default function Nav({ navigation }) {
@@ -23,7 +23,9 @@ export default function Nav({ navigation }) {
             </View>
             <View style={styles.navButton}>
                 <View>
-                    <FontAwesome5 style={{ marginBottom: 4 }} name="nutritionix" size={84} color="black" onPress={() => navigation.navigate('Image Search')} />
+                {/* <EvilIcons name="camera" size={84} color="black" /> */}
+                <FontAwesome5 style={{marginBottom: 7}} name="camera" size={70} color="black" onPress={() => navigation.navigate('Image Search')}/>
+                    {/* <FontAwesome5 style={{ marginBottom: 4 }} name="nutritionix" size={84} color="black" onPress={() => navigation.navigate('Image Search')} /> */}
                 </View>
             </View>
         </View>

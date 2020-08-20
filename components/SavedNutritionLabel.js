@@ -6,6 +6,7 @@ export default function SavedNutritionLabel({ meal, clearClick, deleteMeal }) {
 
     const removeMeal = () => {
         deleteMeal(meal)
+        console.log('click')
     }
 
 

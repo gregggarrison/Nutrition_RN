@@ -10,24 +10,80 @@ export default function Macro({ navigation }) {
     const [carbP, setCarbP] = useState(.30)
     const [protP, setProtP] = useState(.40)
     const [fatP, setFatP] = useState(.30)
+    const [BMR, setBMR] = useState(2070)
+    const [activityLevel, setActivityLevel] = useState('slightly active')
+
 
     const handlePress = () => {
         alert('values saved')
+    }
+
+    const getMaintain = () => {
+        if (activityLevel === "sedentary") {
+            let apal = 1.2
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "slightly active") {
+            let apal = 1.375
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "active") {
+            let apal = 1.55
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "very active") {
+            let apal = 1.725
+            return Math.floor(apal * BMR)
+        }
+        else if (activityLevel === "too active") {
+            let apal = 1.9
+            return Math.floor(apal * BMR)
+        }
     }
 
     return (
 
         <View style={styles.container}>
 
+            <View style={styles.header}>
+                <Text style={styles.textHeader}>Recomended Calories:</Text>
+            </View>
+
+
             <View style={styles.row}>
                 <View style={styles.leftSide}>
-                    <Text style={styles.leftText}>Daily Calories Goal:</Text>
+                    <Text style={styles.leftText}>Maintain:</Text>
                 </View>
-                <View style={styles.rightSide}>
-                    <TextInput onChangeText={(text) => setKcal(text)} style={styles.textInput}>{kcal}</TextInput>
-                    <Text style={styles.rightText}>kcal</Text>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.textInput}>
+                        {BMR === null ? null : getMaintain()}
+                    </Text>
                 </View>
             </View>
+            <View style={styles.row}>
+                <View style={styles.leftSide}>
+                    <Text style={styles.leftText}>-1 lb/wk:</Text>
+                </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.textInput}>
+                        {BMR === null ? null : getMaintain() - 500}
+                    </Text>
+                </View>
+            </View>
+            <View style={styles.row}>
+                <View style={styles.leftSide}>
+                    <Text style={styles.leftText}>+1 lb/wk:</Text>
+                </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.textInput}>
+                        {BMR === null ? null : getMaintain() + 500}
+                    </Text>
+                </View>
+            </View>
+            <View style={{ height: 20, borderWidth: 1, backgroundColor: "#4E709D" }}>
+
+            </View>
+
 
             <View style={styles.rows}>
                 <View style={styles.leftSideRows}>
@@ -91,9 +147,20 @@ export default function Macro({ navigation }) {
                     <Text style={styles.rightTextRight}>{Math.floor(fatP * kcal)}g</Text>
                 </View>
             </View>
+            <View style={{ height: 20, borderWidth: 1, backgroundColor: "#4E709D" }}></View>
+
+            <View style={styles.row}>
+                <View style={styles.leftSide}>
+                    <Text style={styles.leftText}>Daily Calories Goal:</Text>
+                </View>
+                <View style={styles.rightSide}>
+                    <TextInput onChangeText={(text) => setKcal(text)} style={styles.textInput}>{kcal}</TextInput>
+                    <Text style={styles.rightText}>kcal</Text>
+                </View>
+            </View>
 
             <View style={styles.saveRow}>
-                <Button title="Save" onPress={() => { handlePress() }}></Button>
+                <Button fontStyle={{ color: "white" }} title="Save" onPress={() => { handlePress() }}></Button>
             </View>
 
             <Nav navigation={navigation} />
@@ -105,15 +172,26 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: "#4E709D",
+        // backgroundColor: "#4E709D",
+        backgroundColor: "#F6F6F6",
+
     },
 
     saveRow: {
         height: 40,
-        width: "100%",
-        backgroundColor: "#F6F6F6",
-        marginTop: 25,
-        bottom: 140,
+        width: "50%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: 95,
+        // backgroundColor: "#F6F6F6",
+        backgroundColor: "#F5B17B",
+        borderRadius: 14,
+        borderWidth: 2,
+
+        borderColor: "#4E709D",
+
+        // marginTop: 245,
+        bottom: 100,
         position: "absolute",
     },
 
@@ -204,6 +282,81 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         textAlign: "center",
         fontWeight: "bold",
+    },
+
+    // row: {
+    //     height: 40,
+    //     width: "100%",
+    //     flexDirection: "row",
+    //     borderBottomWidth: 1,
+    //     alignItems: "center"
+    // },
+
+    header: {
+        height: 50,
+        width: "100%",
+        flexDirection: "row",
+        borderWidth: 1,
+        backgroundColor: "#4E709D",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 15,
+        borderRadius: 2,
+    },
+
+    labelContainer: {
+        height: 50,
+        width: "40%",
+        flexDirection: "row",
+        borderColor: "#000000",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        backgroundColor: "#F6F6F6",
+    },
+
+    inputContainer: {
+        height: 50,
+        width: "60%",
+        flexDirection: "row",
+        alignItems: "center",
+    },
+
+    label: {
+        color: "#ff8584",
+        fontSize: 25,
+        textAlign: "right",
+        marginLeft: 10,
+        fontFamily: "Verdana"
+
+    },
+
+    textInput: {
+        color: "#4E709D",
+        fontSize: 25,
+        textAlign: "left",
+        marginLeft: 15,
+        fontFamily: "Verdana"
+
+    },
+
+    textHeader: {
+        color: "#F6F6F6",
+        fontSize: 28,
+        textAlign: "center",
+        fontWeight: "bold",
+        // fontFamily: "veranda"
+    },
+
+    rowButton: {
+        height: 200,
+        width: "100%",
+        flexDirection: "row",
+        borderWidth: 1,
+        color: "#ff8584",
+        justifyContent: "space-evenly",
+        backgroundColor: "#4E709D",
+
+
     },
 
 })

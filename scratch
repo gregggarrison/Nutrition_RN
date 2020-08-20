@@ -1,115 +1,638 @@
-   
-         <View style={styles.row}>
-                <View style={{ flex: 1 }}>
-                    <Text style={styles.text}>Name: </Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                    <TextInput style={{height: 30}}
-                        placeholder="name"
-                        onChangeText={(text) => setUsername(text)}
-                        value={username}
-                        style={styles.text}
-                    />
-                </View>
-            </View>
-   
-   
-   
-   <View style={styles.row}>
-                <View style={{ flex: 1 }}>
-                    <Text style={styles.text}>Age: </Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                    <TextInput
-                        placeholder="age"
-                        onChangeText={(text) => setAge(text)}
-                        value={age}
-                        style={styles.text}
-                    />
-                </View>
-            </View>
 
-            <View style={styles.row}>
-                <View style={{ flex: 1 }}>
-                    <Text style={styles.text}>Height: </Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                    <TextInput
-                        placeholder="Height"
-                        onChangeText={(text) => setHeight(text)}
-                        value={height}
-                        style={styles.text}
-                    />
-                </View>
-            </View>
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "coffee",
+    "serveUnit": "cup (8 fl oz)",
+    "calories": "2.0",
+    "allFat": "0.0",
+    "satFat": "0.0",
+    "sodium": "4.7",
+    "fiber": "0.0",
+    "sugar": "0.0",
+    "protein": "0.3",
+    "carbohydrates": "0.0",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1718_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T14:46:56.879Z",
+    "updated_at": "2020-08-17T14:46:56.879Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "cereal",
+    "serveUnit": "cup",
+    "calories": "105.0",
+    "allFat": "1.9",
+    "satFat": "0.4",
+    "sodium": "139.2",
+    "fiber": "2.6",
+    "sugar": "1.2",
+    "protein": "3.4",
+    "carbohydrates": "20.5",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/113_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T14:47:28.641Z",
+    "updated_at": "2020-08-17T14:47:28.641Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "toast",
+    "serveUnit": "slice",
+    "calories": "64.0",
+    "allFat": "0.9",
+    "satFat": "0.2",
+    "sodium": "118.1",
+    "fiber": "0.6",
+    "sugar": "1.4",
+    "protein": "2.0",
+    "carbohydrates": "12.0",
+    "cholesterol": "0.2",
+    "img": "https://nix-tag-images.s3.amazonaws.com/877_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:17:13.276Z",
+    "updated_at": "2020-08-17T15:17:13.276Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "burger",
+    "serveUnit": "sandwich",
+    "calories": "540.0",
+    "allFat": "26.6",
+    "satFat": "10.5",
+    "sodium": "791.0",
+    "fiber": "0.0",
+    "sugar": "0.0",
+    "protein": "34.3",
+    "carbohydrates": "40.3",
+    "cholesterol": "122.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/608_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:29:54.841Z",
+    "updated_at": "2020-08-17T15:29:54.841Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "orange juice",
+    "serveUnit": "cup",
+    "calories": "117.0",
+    "allFat": "0.3",
+    "satFat": "0.0",
+    "sodium": "5.0",
+    "fiber": "0.7",
+    "sugar": "20.7",
+    "protein": "1.7",
+    "carbohydrates": "28.1",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/271_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:40:52.561Z",
+    "updated_at": "2020-08-17T15:40:52.561Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "red bull",
+    "serveUnit": "can 8.4 fl oz",
+    "calories": "111.0",
+    "allFat": "0.0",
+    "satFat": "0.0",
+    "sodium": "100.6",
+    "fiber": "0.0",
+    "sugar": "26.4",
+    "protein": "1.2",
+    "carbohydrates": "26.4",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/2454_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:40:59.253Z",
+    "updated_at": "2020-08-17T15:40:59.253Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pie",
+    "serveUnit": "piece (1/8 of 9\" dia)",
+    "calories": "296.0",
+    "allFat": "13.8",
+    "satFat": "4.7",
+    "sodium": "251.3",
+    "fiber": "2.0",
+    "sugar": "19.6",
+    "protein": "2.4",
+    "carbohydrates": "42.5",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1291_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:43:43.719Z",
+    "updated_at": "2020-08-17T15:43:43.719Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "banana",
+    "serveUnit": "medium (7\" to 7-7/8\" long)",
+    "calories": "105.0",
+    "allFat": "0.4",
+    "satFat": "0.1",
+    "sodium": "1.2",
+    "fiber": "3.1",
+    "sugar": "14.4",
+    "protein": "1.3",
+    "carbohydrates": "27.0",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/399_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:47:04.185Z",
+    "updated_at": "2020-08-17T15:47:04.185Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "french toast",
+    "serveUnit": "slice without syrup",
+    "calories": "219.0",
+    "allFat": "10.7",
+    "satFat": "5.2",
+    "sodium": "237.2",
+    "fiber": "1.1",
+    "sugar": "4.0",
+    "protein": "7.3",
+    "carbohydrates": "23.2",
+    "cholesterol": "129.3",
+    "img": "https://nix-tag-images.s3.amazonaws.com/566_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:47:21.068Z",
+    "updated_at": "2020-08-17T15:47:21.068Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "milk",
+    "serveUnit": "cup",
+    "calories": "125.0",
+    "allFat": "4.7",
+    "satFat": "2.9",
+    "sodium": "127.4",
+    "fiber": "0.0",
+    "sugar": "0.0",
+    "protein": "8.5",
+    "carbohydrates": "12.2",
+    "cholesterol": "19.6",
+    "img": "https://nix-tag-images.s3.amazonaws.com/313_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:49:33.649Z",
+    "updated_at": "2020-08-17T15:49:33.649Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pie",
+    "serveUnit": "piece (1/8 of 9\" dia)",
+    "calories": "296.0",
+    "allFat": "13.8",
+    "satFat": "4.7",
+    "sodium": "251.3",
+    "fiber": "2.0",
+    "sugar": "19.6",
+    "protein": "2.4",
+    "carbohydrates": "42.5",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1291_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:58:54.762Z",
+    "updated_at": "2020-08-17T15:58:54.762Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pepsi",
+    "serveUnit": "can",
+    "calories": "150.0",
+    "allFat": "0.0",
+    "satFat": "0.0",
+    "sodium": "30.0",
+    "fiber": "0.0",
+    "sugar": "41.0",
+    "protein": "0.0",
+    "carbohydrates": "41.0",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/733_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T17:08:23.829Z",
+    "updated_at": "2020-08-17T17:08:23.829Z"
+  )
+ Meal.create(
+    "serveQty": 10,
+    "foodName": "grapes",
+    "serveUnit": "grapes",
+    "calories": "34.0",
+    "allFat": "0.1",
+    "satFat": "0.0",
+    "sodium": "1.0",
+    "fiber": "0.4",
+    "sugar": "7.6",
+    "protein": "0.4",
+    "carbohydrates": "8.9",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/586_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T17:10:48.658Z",
+    "updated_at": "2020-08-17T17:10:48.658Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "avocado",
+    "serveUnit": "avocado, NS as to Florida or California",
+    "calories": "322.0",
+    "allFat": "29.5",
+    "satFat": "4.3",
+    "sodium": "14.1",
+    "fiber": "13.5",
+    "sugar": "1.3",
+    "protein": "4.0",
+    "carbohydrates": "17.1",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/391_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:10:44.586Z",
+    "updated_at": "2020-08-17T18:10:44.586Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "apple",
+    "serveUnit": "medium (3\" dia)",
+    "calories": "95.0",
+    "allFat": "0.3",
+    "satFat": "0.1",
+    "sodium": "1.8",
+    "fiber": "4.4",
+    "sugar": "18.9",
+    "protein": "0.5",
+    "carbohydrates": "25.1",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/384_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:33:09.163Z",
+    "updated_at": "2020-08-17T18:33:09.163Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "chocolate",
+    "serveUnit": "piece",
+    "calories": "37.0",
+    "allFat": "2.1",
+    "satFat": "1.3",
+    "sodium": "5.5",
+    "fiber": "0.2",
+    "sugar": "3.6",
+    "protein": "0.5",
+    "carbohydrates": "4.2",
+    "cholesterol": "1.6",
+    "img": "https://nix-tag-images.s3.amazonaws.com/268_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:33:52.670Z",
+    "updated_at": "2020-08-17T18:33:52.670Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "apple",
+    "serveUnit": "medium (3\" dia)",
+    "calories": "95.0",
+    "allFat": "0.3",
+    "satFat": "0.1",
+    "sodium": "1.8",
+    "fiber": "4.4",
+    "sugar": "18.9",
+    "protein": "0.5",
+    "carbohydrates": "25.1",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/384_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:34:46.845Z",
+    "updated_at": "2020-08-17T18:34:46.845Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pizza",
+    "serveUnit": "slice",
+    "calories": "285.0",
+    "allFat": "10.4",
+    "satFat": "4.8",
+    "sodium": "639.9",
+    "fiber": "2.5",
+    "sugar": "3.8",
+    "protein": "12.2",
+    "carbohydrates": "35.7",
+    "cholesterol": "18.2",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1060_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:35:00.341Z",
+    "updated_at": "2020-08-17T18:35:00.341Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "beer",
+    "serveUnit": "can or bottle",
+    "calories": "153.0",
+    "allFat": "0.0",
+    "satFat": "0.0",
+    "sodium": "14.2",
+    "fiber": "0.0",
+    "sugar": "0.0",
+    "protein": "1.6",
+    "carbohydrates": "12.6",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/412_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:39:54.460Z",
+    "updated_at": "2020-08-17T18:39:54.460Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "vegetable",
+    "serveUnit": "cup",
+    "calories": "45.0",
+    "allFat": "0.5",
+    "satFat": "0.1",
+    "sodium": "43.5",
+    "fiber": "4.2",
+    "sugar": "3.7",
+    "protein": "2.4",
+    "carbohydrates": "9.7",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/685_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:48:38.153Z",
+    "updated_at": "2020-08-17T18:48:38.153Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "chocolate",
+    "serveUnit": "piece",
+    "calories": "37.0",
+    "allFat": "2.1",
+    "satFat": "1.3",
+    "sodium": "5.5",
+    "fiber": "0.2",
+    "sugar": "3.6",
+    "protein": "0.5",
+    "carbohydrates": "4.2",
+    "cholesterol": "1.6",
+    "img": "https://nix-tag-images.s3.amazonaws.com/268_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:52:50.160Z",
+    "updated_at": "2020-08-17T18:52:50.160Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "broccoli",
+    "serveUnit": "spear (about 5\" long)",
+    "calories": "13.0",
+    "allFat": "0.2",
+    "satFat": "0.0",
+    "sodium": "15.2",
+    "fiber": "1.2",
+    "sugar": "0.5",
+    "protein": "0.9",
+    "carbohydrates": "2.7",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/363_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T18:54:21.827Z",
+    "updated_at": "2020-08-17T18:54:21.827Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "cake",
+    "serveUnit": "piece",
+    "calories": "262.0",
+    "allFat": "12.0",
+    "satFat": "2.0",
+    "sodium": "180.2",
+    "fiber": "0.2",
+    "sugar": "28.0",
+    "protein": "2.0",
+    "carbohydrates": "37.7",
+    "cholesterol": "50.3",
+    "img": "https://nix-tag-images.s3.amazonaws.com/320_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T19:42:13.966Z",
+    "updated_at": "2020-08-17T19:42:13.966Z"
+  )
+]
 
-            <View style={styles.row}>
-                <View style={{ flex: 1 }}>
-                    <Text style={styles.text}>Weight: </Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                    <TextInput
-                        placeholder="weight"
-                        onChangeText={(text) => setWeight(text)}
-                        value={weight}
-                        style={styles.text}
-                    />
-                </View>
-            </View>
-            <View style={styles.row}>
-                <View style={{ flex: 1 }}>
-                    <Text style={styles.text}>Sex: </Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                    <TextInput
-                        placeholder="sex"
-                        onChangeText={(text) => setSex(text)}
-                        value={sex}
-                        style={styles.text}
-                    />
-                </View>
-            </View>
 
-                    {/* <Picker
-                selectedValue={sex}
-                onValueChange={(item) => setSex(item)}
-                
-            >
-                <Picker.item label="male" value="male" />
-                <Picker.item label="female" value="female" />
-            </Picker> */}
+// 20200818145734
+// http://10.0.0.178:3000/Meals/
 
-
-            userInfo: {
-        top: 140,
-        height: 200,
-        justifyContent: "center",
-        alignItems: 'center',
-        fontSize: 30,
-    },
-
-    text: {
-        fontSize: 25,
-    },
-
-    row: {
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        alignItems: 'center'
-    },
-
-    label: {
-        fontSize: 18,
-        fontStyle: "italic",
-        marginRight: 10,
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "flex-end",
-        textAlign: 'right',
-    },
-
-    picker: {
-        height: 50,
-        width: 20,
-        flex: 1,
-    }
+[
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "cereal",
+    "serveUnit": "cup",
+    "calories": "105.0",
+    "allFat": "1.9",
+    "satFat": "0.4",
+    "sodium": "139.2",
+    "fiber": "2.6",
+    "sugar": "1.2",
+    "protein": "3.4",
+    "carbohydrates": "20.5",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/113_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T14:47:28.641Z",
+    "updated_at": "2020-08-17T14:47:28.641Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "orange juice",
+    "serveUnit": "cup",
+    "calories": "117.0",
+    "allFat": "0.3",
+    "satFat": "0.0",
+    "sodium": "5.0",
+    "fiber": "0.7",
+    "sugar": "20.7",
+    "protein": "1.7",
+    "carbohydrates": "28.1",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/271_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T15:40:52.561Z",
+    "updated_at": "2020-08-17T15:40:52.561Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pie",
+    "serveUnit": "piece (1/8 of 9\" dia)",
+    "calories": "296.0",
+    "allFat": "13.8",
+    "satFat": "4.7",
+    "sodium": "251.3",
+    "fiber": "2.0",
+    "sugar": "19.6",
+    "protein": "2.4",
+    "carbohydrates": "42.5",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1291_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T20:21:37.990Z",
+    "updated_at": "2020-08-17T20:21:37.990Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pizza",
+    "serveUnit": "slice",
+    "calories": "285.0",
+    "allFat": "10.4",
+    "satFat": "4.8",
+    "sodium": "639.9",
+    "fiber": "2.5",
+    "sugar": "3.8",
+    "protein": "12.2",
+    "carbohydrates": "35.7",
+    "cholesterol": "18.2",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1060_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T21:11:43.939Z",
+    "updated_at": "2020-08-17T21:11:43.939Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "milk",
+    "serveUnit": "cup",
+    "calories": "125.0",
+    "allFat": "4.7",
+    "satFat": "2.9",
+    "sodium": "127.4",
+    "fiber": "0.0",
+    "sugar": "0.0",
+    "protein": "8.5",
+    "carbohydrates": "12.2",
+    "cholesterol": "19.6",
+    "img": "https://nix-tag-images.s3.amazonaws.com/313_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T21:49:48.814Z",
+    "updated_at": "2020-08-17T21:49:48.814Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "wine",
+    "serveUnit": "glass",
+    "calories": "122.0",
+    "allFat": "0.0",
+    "satFat": "0.0",
+    "sodium": "0.0",
+    "fiber": "0.0",
+    "sugar": "0.0",
+    "protein": "0.1",
+    "carbohydrates": "3.8",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/879_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T22:24:39.122Z",
+    "updated_at": "2020-08-17T22:24:39.122Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "tomatoes",
+    "serveUnit": "medium whole (2-3/5\" dia)",
+    "calories": "22.0",
+    "allFat": "0.2",
+    "satFat": "0.0",
+    "sodium": "6.2",
+    "fiber": "1.5",
+    "sugar": "3.2",
+    "protein": "1.1",
+    "carbohydrates": "4.8",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/191_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T22:30:21.521Z",
+    "updated_at": "2020-08-17T22:30:21.521Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "sweetart",
+    "serveUnit": "piece",
+    "calories": "6.0",
+    "allFat": "0.0",
+    "satFat": "0.0",
+    "sodium": "0.0",
+    "fiber": "0.0",
+    "sugar": "1.6",
+    "protein": "0.0",
+    "carbohydrates": "1.6",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/4618_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T22:38:30.460Z",
+    "updated_at": "2020-08-17T22:38:30.460Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pizza",
+    "serveUnit": "slice",
+    "calories": "285.0",
+    "allFat": "10.4",
+    "satFat": "4.8",
+    "sodium": "639.9",
+    "fiber": "2.5",
+    "sugar": "3.8",
+    "protein": "12.2",
+    "carbohydrates": "35.7",
+    "cholesterol": "18.2",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1060_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T22:46:15.320Z",
+    "updated_at": "2020-08-17T22:46:15.320Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pasta",
+    "serveUnit": "cup spaghetti not packed",
+    "calories": "196.0",
+    "allFat": "1.2",
+    "satFat": "0.2",
+    "sodium": "1.2",
+    "fiber": "2.2",
+    "sugar": "0.7",
+    "protein": "7.2",
+    "carbohydrates": "38.3",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1012_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T23:44:40.901Z",
+    "updated_at": "2020-08-17T23:44:40.901Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "pasta",
+    "serveUnit": "cup spaghetti not packed",
+    "calories": "196.0",
+    "allFat": "1.2",
+    "satFat": "0.2",
+    "sodium": "1.2",
+    "fiber": "2.2",
+    "sugar": "0.7",
+    "protein": "7.2",
+    "carbohydrates": "38.3",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/1012_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-17T23:47:34.617Z",
+    "updated_at": "2020-08-17T23:47:34.617Z"
+  )
+ Meal.create(
+    "serveQty": 1,
+    "foodName": "apple",
+    "serveUnit": "medium (3\" dia)",
+    "calories": "95.0",
+    "allFat": "0.3",
+    "satFat": "0.1",
+    "sodium": "1.8",
+    "fiber": "4.4",
+    "sugar": "18.9",
+    "protein": "0.5",
+    "carbohydrates": "25.1",
+    "cholesterol": "0.0",
+    "img": "https://nix-tag-images.s3.amazonaws.com/384_thumb.jpg",
+    "user_id": 1,
+    "created_at": "2020-08-18T20:54:46.461Z",
+    "updated_at": "2020-08-18T20:54:46.461Z"
+  )

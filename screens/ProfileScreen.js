@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, ActionSheetIOS } from 'react-native'
+import { View, Text, StyleSheet, ActionSheetIOS, Image } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import Nav from '../components/Nav'
 
@@ -12,6 +12,7 @@ export default function ProfileScreen({ navigation }) {
     const [sex, setSex] = useState("male")
     const [BMR, setBMR] = useState(null)
     const [activityLevel, setActivityLevel] = useState('slightly active')
+
 
     const handlePress = () => {
         ActionSheetIOS.showActionSheetWithOptions(
@@ -98,6 +99,11 @@ export default function ProfileScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.main}>
+
+                <View style={{ justifyContent: "center", alignItems: "center" }}>
+                    <Image style={{ width: 300, height: 300, marginTop: 18, marginBottom: 7 }} source={{ uri: "https://ca.slack-edge.com/T02MD9XTF-U0104PU0YH1-1165c623265e-512" }}></Image>
+
+                </View>
                 <View style={styles.profileContainer}>
                     <View style={styles.rowView}>
                         <View style={styles.labelContainer}>
@@ -167,9 +173,20 @@ export default function ProfileScreen({ navigation }) {
                             <TextInput style={styles.textInput} placeholder="activity level" value={activityLevel} />
                         </View>
                     </View>
+
+                    <View style={styles.rowView}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>BMR:</Text>
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.textInput} >
+                                {BMR}
+                            </Text>
+                        </View>
+                    </View>
                 </View>
 
-                <View style={styles.calorieContainer}>
+                {/* <View style={styles.calorieContainer}>
                     <View style={styles.header}>
                         <Text style={styles.textHeader}>Recomended Calories:</Text>
                     </View>
@@ -214,7 +231,7 @@ export default function ProfileScreen({ navigation }) {
                             </Text>
                         </View>
                     </View>
-                </View>
+                </View> */}
 
                 <Nav navigation={navigation} />
 
@@ -227,15 +244,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#4E709D",
+        justifyContent: "space-between"
     },
 
     main: {
         height: "100%",
+        // backgroundColor: "#DBE2EF",
         backgroundColor: "#4E709D",
+
+        // justifyContent: "space-evenly"
+
     },
 
     profileContainer: {
-        height: 300,
+        height: 280,
         width: "100%",
         backgroundColor: "#F6F6F6",
         marginTop: 12,
@@ -249,10 +271,11 @@ const styles = StyleSheet.create({
     },
 
     rowView: {
-        height: 50,
+        height: 40,
         width: "100%",
         flexDirection: "row",
-        borderWidth: 1,
+        borderBottomWidth: 1,
+        alignItems: "center"
     },
 
     header: {
@@ -285,7 +308,9 @@ const styles = StyleSheet.create({
         color: "#ff8584",
         fontSize: 25,
         textAlign: "right",
-        marginLeft: 30,
+        marginLeft: 10,
+        fontFamily: "Verdana"
+
     },
 
     textInput: {
@@ -293,11 +318,15 @@ const styles = StyleSheet.create({
         fontSize: 25,
         textAlign: "left",
         marginLeft: 15,
+        fontFamily: "Verdana"
+
     },
 
     navText: {
         color: "#4E709D",
         fontSize: 25,
+        fontFamily: "veranda"
+
     },
 
     textHeader: {
@@ -305,6 +334,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         textAlign: "center",
         fontWeight: "bold",
+        fontFamily: "veranda"
     },
 
     rowButton: {

@@ -81,7 +81,7 @@ Again both are free and can be setup within a few minutes.
 
 * If the user doesn't feel like keying in their search they have the option of utilizing their camera to take a photo of their food item and get the same result utilizing Clarifai's image recognition library. 
 
-![imgRecAct](https://user-images.githubusercontent.com/61663115/90788838-6f2de400-e2c3-11ea-8632-8266f77b7dbe.png)![imgRecResult](https://user-images.githubusercontent.com/61663115/90788829-6ccb8a00-e2c3-11ea-979f-0fbff13312be.png)
+![animated](https://user-images.githubusercontent.com/61663115/90984672-bae6c480-e533-11ea-8bb3-997924f2ea77.GIF)
 
 
 * The user can click the arrows next to the date to toggle back and forth to see their summary of nutritional intake corresponding the date selected

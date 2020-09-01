@@ -20,7 +20,7 @@ Losing weight/getting healthy is a daunting task not just on a physical level. C
 Nutrition_RN (working title) helps alleviate some of the stress that comes with traveling unchartered territories.  The concept of losing weight is simple... INPUT < OUTPUT.  My app will establish your BMR (minimum number of calories required for basic functions at rest source: https://www.healthline.com/health/what-is-basal-metabolic-rate#bmr-vs-rmr).  
 
 ## Intro Video
-Coming soon....
+https://youtu.be/rY2pa7_viaQ
 
 ## Technologies
 
